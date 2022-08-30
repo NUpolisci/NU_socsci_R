@@ -2,7 +2,7 @@
 
 In this chapter: 
 
-- What is <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span> and why use it? 
+- What is <span>L<sup>A</sup>T<sub>E</sub>X</span> and why use it? 
 
 - Let's make this simple: Using Overleaf to create <span class="latex">T<sub>E</sub>X</span>-style documents 
 
