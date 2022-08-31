@@ -1,7 +1,7 @@
 ---
 title: "Computational Programming for the Social Sciences"
 author: "Sarah Moore and Jean Clipperton"
-date: "2022-08-29"
+date: "2022-08-31"
 site: bookdown::bookdown_site
 output: bookdown::bs4_book
 documentclass: book
@@ -22,9 +22,9 @@ These texts are jointly authored by Jean Clipperton and Sarah Moore to serve in 
 
 [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/index.html) by Hadley Wickham 
 
-[Yihui Xie's *bookdown: Authoring Books and Technical Documents with R Markdown*](https://bookdown.org/yihui/bookdown/)
+[*bookdown: Authoring Books and Technical Documents with R Markdown*](https://bookdown.org/yihui/bookdown/) by Yihui Xie
 
-[Sean Kross's guide to `bookdown`](https://seankross.com/2016/11/17/How-to-Start-a-Bookdown-Book.html)
+Sean Kross's [guide to `bookdown`](https://seankross.com/2016/11/17/How-to-Start-a-Bookdown-Book.html)
 
 
 
@@ -32,10 +32,10 @@ These texts are jointly authored by Jean Clipperton and Sarah Moore to serve in 
 
 As a prerequisite, the tutorials in this text require that you download [R](https://cran.r-project.org/), [RStudio IDE](https://www.rstudio.com/), [Python](https://www.python.org/downloads/), and [PyCharm](https://www.jetbrains.com/pycharm/) to interface with the pertinent coding languages-- R and Python. Later sections will go into more detail regarding how to load and interact with these programs on your computer, but please ensure that you have sufficient storage and computing power to operate these programs.
 
-Additional activities will require that you become familiar with [GitHub](https://github.com/), [LaTeX](https://www.latex-project.org/), and additional computational packages that are downloaded *ad hoc* in their respective programming platform.
+Additional activities will require that you become familiar with [GitHub](https://github.com/), [Markdown](https://www.markdownguide.org/), [LaTeX](https://www.latex-project.org/), and additional computational packages that are downloaded *ad hoc* in their respective programming platform.
 
 We further suggest that you familiarize yourself with [StackExchange](https://stackexchange.com/) or [StackOverflow](https://stackoverflow.com/). Stack sites host incredibly helpful message boards for troubleshooting problems related to really anything, but here we emphasize their usefulness for questions related to statistics and programming. It's likely that one of your many questions you will have are already answered on Stack!
 
 ## Questions or Comments
 
-This text is updated regularly and we welcome all suggestions toward its improvement. Please email one of the authors, [Sarah Moore](mailto:sarahmoore2022@u.northwestern.edu) or [Jean Clipperton](mailto:jean.clipperton@northwestern.edu), with your comments.
+This text is updated regularly and we welcome all suggestions toward its improvement. Please email one of the authors, [Sarah Moore](mailto:sarahmoore2022@u.northwestern.edu), with your comments.

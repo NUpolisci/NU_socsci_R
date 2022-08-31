@@ -1,16 +1,88 @@
-# Documentation with <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span> {#ch3}
+# Documentation with Markdown and <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span> {#ch3}
 
 In this chapter: 
 
-- What is <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span> and why use it? 
+- What is Markdown? Where do I use it? 
+
+- What is <span>L<sup>A</sup>T<sub>E</sub>X</span> and why use it? 
 
 - Let's make this simple: Using Overleaf to create <span class="latex">T<sub>E</sub>X</span>-style documents 
 
-- Working with templates
-
 - Conventions in <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span> 
 
-Portions of this chapter were derived from [Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#Writing_your_first_piece_of_LaTeX) available on Overleaf--please check out this resource! 
+Portions of this chapter were derived from Kieran Healy's [The Plain Person’s Guide to Plain Text Social Science](https://plain-text.co/index.html#introduction) and [Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#Writing_your_first_piece_of_LaTeX)--please check out both of these great resources! 
+
+## Markdown: A Multi-Use Tool 
+
+You will probably encounter Markdown style documentation across a lot of different places nowadays. Markdown is a plaintext approach to markup that helps you easily and efficiently create documentation. Just like the <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span> style that we cover next, Markdown is *not* what we call a "What You See Is What You Get" interface, like we would say Microsoft Word or Pages are. In WYSIWYG environments, when you bold a text or add a header, those changes are automatically reflected in the visualization of the document. Plain text editors do not include these frills as you go, instead you can use certain code elements to implement desired formatting such that details such as bold text and headers are apparent once the document has been rendered or compiled. 
+
+:::: {style="display: flex;"}
+
+::: {}
+This is all a lot of gibberish to begin with, so let's just cut to Markdown now. Among these simple text editors, Markdown is likely the *most* simple of the variety. Markdown files can be easily created in various different programs and thus ported to be read among just as many. You will most likely use Markdown in version control applications and now in RStudio!
+
+Here we will start with some minimal exploration in Markdown in RStudio and a sort of default into a html document. This won't be *immediately* relevant to everything you do, however Markdown documentation *will* be relevant to version control in Github, as well as for creating presentations down the line. So, we'll take a slow dive in.
+
+To get started, open up RStudio and in the left-hand corner you will click to open a new file. In the dropdown menu you will see the option **R Markdown...**, choose that option and in the next dialogue box leave the options as is and click **OK**. 
+
+:::
+::: {}
+
+:::
+::: {}
+
+![Creating an R Markdown File](rmd_choice.png){width=1.5in}
+:::
+
+:::: 
+
+The file that you have created will have the necessary preamble information to be able to later compile the document plus the basic rundown of the structure of an R Markdown file. It will look something like this: 
+
+![R Markdown Example](rmd_example.png){width=90%}
+
+The necessary preamble information is the YAML section. This area will configure certain specifications for the document that you hope to achieve. Here, R has already specified the title, author, date, and output format for us. However, we are able to edit that at will. Go ahead, and change the **title** to something fitting for a tutorial in Markdown. As a note, this is the title that will appear at the top of the final document, not the file name. 
+
+You are free to scroll through this base level document to see what a "typical" Markdown text might look like. For the most part, you can type in Markdown exactly what you want to type and it will render as such. The catch is knowing how to achieve certain details to emphasize your text, create sections, insert example code bits, and so on. At this point, I would typically just delete all this base tutorial text from the file to replace it with my own. However, we will leave it there now as some of file includes some illustrative examples of the Markdown language.  
+
+As you'll notice in the basic document, there are certain standalone text bits set aside with `#` or `##`. In Markdown language the hashtag is how you designate headers of different levels. Each additional hashtag designates a lower level heading. That is: 
+
+- `#` First level heading 
+
+- `##` Second level heading 
+
+- `###` Third level heading
+
+Inputting these hashtags into the plain text Markdown thus will not automatically create these headings with bold text and slightly larger font in the plain text itself. Instead, this means that we have specified that once we render the document, we should expect that these parts of the text are configured as section headings of varying intensity. 
+
+There are also some easy ways to add emphasis to our text in Markdown:
+
+- `*text*` or `_text_` *Italics* 
+
+- `**text` or `__text__` __Bold__
+
+- `_**Emphasis**_` _**Emphasis**_
+
+
+- `[text or title](url)` Hyperlink
+
+- `---` Horizontal sectioning 
+
+- Unnumbered lists can be included (like this one) by starting lines with `-`
+
+- Numbered lists can be included by starting lines with ascending numerical order, such that: 
+  1. Lists
+  2. Look
+  3. Like 
+  4. This
+
+
+This [handy Markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/) includes all of these possibilities and more. 
+
+Other things included in this minimal example are code chunks and ways to embed plots. Those pieces are a little far off from where you are now, but this example at least exposes you to what the possibilities of a Markdown document in R might allow. Other option included quick format tables, emojis 😄, hyperreferences to other spots in the documentation, and the list goes on. 
+
+Let's now see what we can render from the document as is. In the toolbar of the R Markdown file, you will see a button to **Knit** the document. Choose this and let the console run its magic. Once the document has been rendered it will pop up in R's Editor window. If your html document has compiled, then we are at the end of the road for now. Otherwise, we have something (likely minor) to debug. 
+
+But *what is Markdown good for*? Well a lot. In R alone, you can author documents to pdf, html, and more for papers, presentations, websites, etc. In other places, such as on Github version control, you use Markdown to comment on code, data, and other parts of a project in motion. You can also use Markdown language on Github and other sites to easily integrate into other html workflows to write websites from scratch without really having to expand your existing coding knowledge. There are even note-taking platforms where Markdown language is used, which takes a lot of the tedious work of note-taking out of the equation. Knowing Markdown is really portable and adaptable to a lot of different situations and spaces, and figuring out how to integrate it into your workflow now will save some headache down the road. So much so, that I recommend that you take a look at this guide to [plain text work flows](https://plain-text.co/index.html#introduction) by Kieran Healy, a professor of Sociology. 
 
 ## <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>: It's pronounced LAH-tekh or LAY-tekh
 

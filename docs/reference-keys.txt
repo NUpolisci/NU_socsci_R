@@ -12,6 +12,7 @@ python
 pycharm-ide
 moving-forward
 ch3
+markdown-a-multi-use-tool
 latex-its-pronounced-lah-tekh-or-lay-tekh
 getting-set-up-on-overleaf
 your-first-latex-overleaf-project

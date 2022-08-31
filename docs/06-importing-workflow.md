@@ -23,7 +23,7 @@ getwd()
 ```
 
 ```
-## [1] "/Users/sarahmoore/OneDrive - Northwestern University/Teaching/2022_MathCamp/NU-math-camp/403-R_Text"
+## [1] "/Users/sarahmoore/OneDrive - Northwestern University/Teaching/R_textbook_v1/nu_socscir"
 ```
 
 While you could change your working directory in the Preferences menu, the call `setwd()` offers you more flexibility to change the working directory as needed. The set-up for `setwd()` will differ on the basis of your operating system, as MacOS and Windows write file paths a little differently. However, the general call is the same in both cases and very straightforward. You merely write out the file path corresponding to the directory that you would like to work in and run the call as you would any other R function. The command `setwd()` will maintain that working directory until you close that R session or specify otherwise. Unless you have created an R project, which we cover in more detail below, it is best practice to begin every R script with defining your working directory with the `setwd()` call and then double checking that the pathway is correct with `getwd()`. It's also best practice to double check your file path anytime you try to change the directory in the middle of a script. 
