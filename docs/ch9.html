@@ -77,7 +77,7 @@
 <p>We won’t go into the underlying philosophy of <code>ggplot2</code> here and the Grammar of Graphics. But if you are interested in more of this Hadley Wickham’s free online text <a href="https://ggplot2-book.org/getting-started.html">ggplot2: Elegant Graphics for Data Analysis</a> goes into further details on these points. The book also goes into more detail than we can here on more specialized graph types and specifications. As you move forward, this will be a good resource to revisit.</p>
 <p>More than just discovering the landscape of <code>ggplot2</code>, this chapter also contains some key takeaways about visualizing data in general. So, even if you prefer base R, <code>matplotlib</code> in Python, or just want to be a careful critic of data visualization in popular publications, this chapter will have good insight regarding what does and does not constitute good data viz practice.</p>
 <p>Based on our work in the previous chapter, you have already downloaded <code>ggplot2</code> package. Some others that will be useful for this tutorial are <code>ggrepel</code>, <code>ggthemes</code>, <code>ggtext</code>, and <code>scales</code>. When you get a chance, install those. In the case that your code does not work later on, a missed install on one of these packages might be why. Piping and control over the verbiage from <code>dplyr</code> are pretty necessary to have a good command of <code>ggplot2</code>. So, if you are feeling unsure about those skills, revisit the sections on those items and practice with some more test data.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install all the recommended packages at once </span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ggrepel"</span>, <span class="st">"ggthemes"</span>, <span class="st">"ggtext"</span>, <span class="st">"scales"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -89,7 +89,7 @@
 <p><em>This chapter will be largely be an applied walk-through tutorial. Therefore, it is written as if you are working along with the text. While you can just easily copy and paste the code from the text to your R script, you will likely benefit from developing the memory around how to compose a plot code, so try to type the code as we go along.</em></p>
 <p>Let’s start out by simply just loading in the <code>tidyverse</code> package, which loads in <code>ggplot2</code>. The data that we will use for this chapter are already loaded in with the package. We will first take a look at the <code>msleep</code> data. This is a dataset that details the sleep behaviors of various mammals gathered by Savage and West (2007). Let’s first get acquainted with the dataset and what kinds of variables we will be handling. Note that as long as you have loaded in <code>ggplot2</code> or <code>tidyverse</code> via the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> call, you will not have to do anything else to import data.</p>
 <p>First, we can just check the dimensions of the data with <code>dim(msleep)</code>. Here we will see that there are 83 rows of data over 11 columns. This means that there are 83 observations for each of the 11 columns. We can also run <code>tibble(msleep)</code> to see a snippet of the data. Alternatively, you can check out the <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> function to see all of the column names. The variable names lead us to believe that the dataset contains a number of identifying traits of each mammal in the data, their sleep and waking patterns, and some other physical information. As we talked about before, codebooks are necessary to understand how data are measured and how to interpret different values. To access the codebook for this dataset you can access the help file via the call <code><a href="https://ggplot2.tidyverse.org/reference/msleep.html">?msleep</a></code>.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
 ## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
@@ -99,10 +99,10 @@
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">msleep</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 83 11</code></pre>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">msleep</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 83 × 11
 ##    name         genus vore  order conse…¹ sleep…² sleep…³ sleep…⁴ awake  brainwt
@@ -120,7 +120,7 @@
 ## # … with 73 more rows, 1 more variable: bodywt &lt;dbl&gt;, and abbreviated variable
 ## #   names ¹​conservation, ²​sleep_total, ³​sleep_rem, ⁴​sleep_cycle
 ## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">msleep</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Rows: 83
 ## Columns: 11
@@ -135,7 +135,7 @@
 ## $ awake        &lt;dbl&gt; 11.9, 7.0, 9.6, 9.1, 20.0, 9.6, 15.3, 17.0, 13.9, 21.0, 1…
 ## $ brainwt      &lt;dbl&gt; NA, 0.01550, NA, 0.00029, 0.42300, NA, NA, NA, 0.07000, 0…
 ## $ bodywt       &lt;dbl&gt; 50.000, 0.480, 1.350, 0.019, 600.000, 3.850, 20.490, 0.04…</code></pre>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">msleep</span></span></code></pre></div>
 <div id="exercise-2" class="section level3" number="9.2.1">
 <h3>
@@ -167,20 +167,20 @@
 </ol>
 <p>All additional specifications are auxiliary to the base plot.</p>
 <p>In the case of the <code>msleep</code> data, let’s say we want to plot a histogram of the <code>vore</code> variable. We will start with specifying the data, then containing the chosen variable in the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> specification. Because there is only one variable, we only set the specification <code>vore</code> on the x variable argument. To add the <code>geom_bar</code> layer, use <code>+</code>. <strong>The plus sign is how you will append new layers to all plots created in <code>ggplot2</code>.</strong> For now, just append <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> without adding any additional arguments.</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># histogram of vore variable, v1 </span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">msleep</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">vore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>It is conventional that you would create a new line of code after each <code>+</code> appending a specification on to a plot. We suggest this to make identifying the constitutive parts of a graph easier, which further helps with debugging if certain parts of the code are wonky.</p>
 <p>Now try to run the same code, but instead make the <code>geom</code> function <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># histogram of vore variable, v2 </span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">msleep</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">vore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>When you run this code, you will still encounter a warning. This is because the function for <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> is reserved for continuous variables. However, we can still use <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> in a roundabout way if we choose.</p>
 <p>Given that <code>vore</code> is a character variable, there is no natural way that ggplot knows to graph it to the x axis. Therefore, we have to specify that we want counts of the specified x variable. You can do this in the geom function by specifying <code>geom_histogram(stat='count')</code>. This will coerce <code>ggplot2</code> to include each of the categories of the specified variable as a bin on the histogram.</p>
 <p>Check out the following plot, what happens when you use <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> now?</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># histogram of vore variable, v3 </span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">msleep</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">vore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>stat<span class="op">=</span><span class="st">'count'</span><span class="op">)</span></span></code></pre></div>
@@ -191,7 +191,7 @@
 </h3>
 <p>There are two ways to add data into your <code>ggplot2</code> visualization. The first is the basic way that we performed above where you merely make the dataframe the first argument of the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call.</p>
 <p>The second way allows you to work with more nuanced versions of your data and works off of a <code>%&gt;%</code> pipe. Instead of making your data an argument in <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> the data will precede the plot function with a pipe, as shown in option 2 in the code below. When data is added in this way, the arguments in the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function skip straight to specifying <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>.</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># option 1 for adding data to the plot </span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
@@ -203,7 +203,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The second option to specify the data source is useful when you want to use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>, or another <code>dplyr</code> verb on a variable in the dataset and then graph the resulting value. For example, in the graph below we can plot the mean <code>sleep_total</code> based on a mammal’s classification in the <code>vore</code> variable. To do so, we create a pipe preceding the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call that groups the mammals based on their <code>vore</code> attribute, and then summarize the <code>vore</code> variable via the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># start the pipe with the data</span></span>
 <span></span>
 <span><span class="va">msleep</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -227,7 +227,7 @@
 <li><p><code>size</code>: varies the size of the (x,y) observation indicated in <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> based on a third variable, also likely best fit for <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> applications</p></li>
 </ul>
 <p>Recall the histogram example from above, where we plotted the counts of the <code>vore</code> variable. We can use the <code>fill</code> argument to specify that we would also like for the graph to show the conservation status within each of the <code>vore</code> groups. In turn, ggplot will return the same histogram with the bars broken up into different colors and an accompanying legend as to what each fill color represents. Check out the code below and try for yourself.</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">msleep</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">vore</span>, fill<span class="op">=</span><span class="va">conservation</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>stat<span class="op">=</span><span class="st">"count"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
@@ -258,7 +258,7 @@
 <li><code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code></li>
 </ol>
 <p>Creates a scatter plot of points for each (x,y) observation.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># create a scatterplot of the median duration of unemployment (x) and personal savings rates (y)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">uempmed</span>, y <span class="op">=</span> <span class="va">psavert</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -268,12 +268,12 @@
 <li><code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code></li>
 </ol>
 <p>Creates a boxplot of the distribution and quartiles of the specified variable(s). If both x and y are specified, one should be a discrete variable and the other should be continuous. This would entail that the distribution of the continuous variable is plotted over the subgroups of the discrete variable. Both options are shown below.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># create a boxplot of the distribution of the personal savings rate </span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">psavert</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># create a boxplot of the personal savings rate above and below the median unemployment level </span></span>
 <span></span>
 <span><span class="va">economics</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -283,7 +283,7 @@
 <p><img src="08-data-viz_files/figure-html/unnamed-chunk-10-2.png" width="672">
 3. <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code></p>
 <p>Creates a line graph and best used for showing data over time.</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># create a line graph of the median unemployment duration over time </span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">uempmed</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -291,22 +291,22 @@
 <p><img src="08-data-viz_files/figure-html/unnamed-chunk-11-1.png" width="672">
 4. <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code></p>
 <p><code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> behave quite similarly. Though, as we mentioned before, <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> is for the discrete case and <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> is for the continuous case (though we can coerce it to behave otherwise). Both of these plots can be used to show counts of observations.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># create a histogram of the total population in thousands, try different specifications of the `bins` argument in `geom_histogram()`</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-12-2.png" width="672"></div>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-12-3.png" width="672"></div>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># create a bar chart of the number of observations above and below the mean population </span></span>
 <span></span>
 <span><span class="va">economics</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -330,7 +330,7 @@
 </h3>
 <p>First, we will start with labelling your x and y axes and adding a title to your graph. There are a couple of different ways to do this, and there may be some contexts in which one way is better than the other. For now, the choice is likely one of preference and efficiency. This is to say, for now use whichever manner seems to be quicker for you to implement.</p>
 <p>The first way is to specify a line a new function for each label. To do so, we’ll revisit the line graph from above that plots the median duration of employment over time. Using the same graph, first add the line <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab()</a></code> with a relevant title for the x-axis in quotation marks. Do the same, but instead specify <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab()</a></code> and a relevant title for the y-axis. Finally, think of a title for the whole graph and run this in quotation marks in the function <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle()</a></code>. Each of these specifications will allow you to add a label to the graph in stepwise fashion.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># let's revisit the line graph showing the duration of median unemployment over time from above </span></span>
 <span></span>
 <span><span class="co"># add an x label </span></span>
@@ -338,20 +338,20 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Date"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># add a y label </span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">uempmed</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Median Unemployment Duration (in Weeks)"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-13-2.png" width="672"></div>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># add a title </span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">uempmed</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Median Unemployment Duration over Time, 1976-2015 (monthly)"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-13-3.png" width="672"></div>
 <p>These stepwise functions can all be added line-by-line to produce the specified labels together.</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># let's put it all together </span></span>
 <span></span>
 <span><span class="co"># can add each as separate lines </span></span>
@@ -362,7 +362,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Median Unemployment Duration over Time, 1976-2015 (monthly)"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <p>But, a potentially simpler way of doing this is just to combine each axis and title function into a single label function, as we’ve shown below. In this case, you can simply specify the labels in the function <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code>, with each argument corresponding to a respective axis or the title. There may be complicated cases in which this is less efficient, but for now this code is likely the most efficient so long as the syntax is correct.</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># or, can opt for a single function to label  </span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">uempmed</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -384,7 +384,7 @@
 <p>Additionally, the base <code>ggplot2</code> font and layout might not be the most interesting to some. If this is the case, the <code>ggthemes</code> package allows you to override the base visualization theme entirely in favor of some alternative. While you could style a theme from scratch on your own, for now these preset themes will be great alternatives if you get bored of the typical <code>ggplot2</code> plot.</p>
 <p>As an aside, you can also save a plot as you would any other object. For example, below we’ve saved the median unemployment duration as the object named <code>plot_unemployment</code>. After saving the base plot, you can then simply use the object name and append the additional plot specifications</p>
 <p>To specify a different theme for a plot, you’ll first need to load the package <code>ggthemes</code>.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">plot_unemployment</span><span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">economics</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">uempmed</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -394,10 +394,10 @@
 <span></span>
 <span><span class="va">plot_unemployment</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_economist.html">theme_economist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plot_unemployment</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_fivethirtyeight.html">theme_fivethirtyeight</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-16-2.png" width="672"></div>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plot_unemployment</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_stata.html">theme_stata</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-16-3.png" width="672"></div>
 <p>```</p>

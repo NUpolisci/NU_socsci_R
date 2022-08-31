@@ -16,7 +16,7 @@ We call the built-in functions that do not require any additional specification 
 
 Packages typically contain a number of different functions with a similar basic structure that are created with a similar theme or goal in mind. For example, the `plm` package is specifically for modelling panel data; that is, data that considers the same variables over time. Another example is the package `clubSandwich`, which estimates additional types of standard errors for different models and tests whether a model is still significant given the updated standard error. Other packages provide additional tools for reshaping and manipulating data, visualizing data, or dealing with less standard forms of data. 
 
-Nowadays, Base R is really quite limited in what it can achieve relative to some of these additional packages. Therefore, literacy in what certain packages are useful for will be an important skill to develop. Here we will focus on how to install and access these additional packages, with specific emphasis on a package that will be useful in the chapters to come-- the `tidyverse` and `dplyr`. Both of these are packages that have become typical 
+Nowadays, Base R is really quite limited in what it can achieve relative to some of these additional packages. Therefore, literacy in what certain packages are useful for will be an important skill to develop. Here we will focus on how to install and access these additional packages, with specific emphasis on a package that will be useful in the chapters to come-- the `tidyverse` and `dplyr`. Both of these are packages that have become typical in modern data science and analysis in R.
 
 To perform the initial simple install of a package, you will merely run the call `install.packages("")`. This call downloads the package from the CRAN, the repository of R related "stuff" we mentioned in Chapter \@ref(ch2). When you run this code, you will see a string of script run in the console. This is normal and not something you really need to pay attention to unless there is an error, which R will alert you of. 
 
@@ -73,7 +73,7 @@ In the case that you are really just curious or stumped about a particular funct
 
 In either method, R will produce the help files associated with the function in question in the **Help** pane again on the bottom, right-hand side of the RStudio interface. This help file provides information on the syntax, the definition of each argument in the syntax, and what the output means. Furthermore, these help files include examples, referred to as vignettes, that help you to see the functions in action with some notated code. In most cases, these help files will be sufficient to help you understand how a function works at a basic level. However, if the files are unclear or you need a bit more of a walk through, StackExchange or other forums are better for more detailed information.
 
-## Dealing with Twins
+## Same, but Different 
 
 As we alluded to in the previous section, sometimes you will encounter two functions that have identical names but you will need to make use of *both* packages containing these functions in the same script. When this happens, R's default behavior is  to choose one function to prioritize over the other, resulting in one of the functions being **masked**.
 
