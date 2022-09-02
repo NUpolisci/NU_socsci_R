@@ -73,9 +73,9 @@ In a couple of chapters, you will encounter a program called GitHub. Git and the
 
 GitHub is a particularly robust platform for version control, wherein there are multiple ways to interact with the overarching system, Git. There are really a couple of different ways that you you can manage Git-- via the Command Line and Shell (higher learning curve), in R, or via Github Desktop (somewhat less of a learning curve). Personally, I like to use an interface so I have more visual cues about what is coming in and going out. 
 
-To begin with GitHub, you'll need to create and account on the [GitHub website](https://github.com/). It is possible that you just work entirely from the website, this is probably the option that will be best fit for some of you. But, given the steeper learning curve of the Desktop version and beyond it's preferable that you learn the more difficult options in a structure environment. After creating your GitHub account, you can [download GitHub Desktop](https://desktop.github.com/). 
+To begin with GitHub, you'll need to create and account on the [GitHub website](https://github.com/). It is possible that you just work entirely from the website, this is probably the option that will be best fit for some of you. But, given the steeper learning curve of the Desktop version, it's preferable that you learn the more difficult options in a structure environment. After creating your GitHub account, you can [download GitHub Desktop](https://desktop.github.com/). 
 
-Once you have downloaded GitHub on to your machine, you will be able to log in to the GitHub account that you created. If the sign in menu does not pop up automatically, you can access the sign in via the **Preferences** menu. In a few chapters you will have the full rundown of Github via R and Desktop, so read more there! 
+Once you have downloaded GitHub on to your machine, you will be able to log in to the GitHub account that you created. If the sign in menu does not pop up automatically, you can access the sign in via the **Preferences** menu. In a few chapters you will have the full rundown of Github via R and Desktop, so read more there!
 
 ## Installing and Familiarizing Yourself with Python 
 
