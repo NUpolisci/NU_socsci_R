@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 4 Version Control with GitHub in R and GitHub Desktop | Computational Programming for the Social Sciences</title>
+<title>Chapter 5 GitHub Speak | Computational Programming for the Social Sciences</title>
 <meta name="author" content="Sarah Moore and Jean Clipperton">
-<meta name="description" content="In this chapter: Very direct: how to fuse RStudio with Github for version control  4.1 GitHub Speak Git is a particular system of version control that has really just outclassed a couple of other...">
+<meta name="description" content="Git is a particular system of version control that has really just outclassed a couple of other possible systems. Because of the abundance of people already using Git, the number of Git users has...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 4 Version Control with GitHub in R and GitHub Desktop | Computational Programming for the Social Sciences">
+<meta property="og:title" content="Chapter 5 GitHub Speak | Computational Programming for the Social Sciences">
 <meta property="og:type" content="book">
-<meta property="og:description" content="In this chapter: Very direct: how to fuse RStudio with Github for version control  4.1 GitHub Speak Git is a particular system of version control that has really just outclassed a couple of other...">
+<meta property="og:description" content="Git is a particular system of version control that has really just outclassed a couple of other possible systems. Because of the abundance of people already using Git, the number of Git users has...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 4 Version Control with GitHub in R and GitHub Desktop | Computational Programming for the Social Sciences">
-<meta name="twitter:description" content="In this chapter: Very direct: how to fuse RStudio with Github for version control  4.1 GitHub Speak Git is a particular system of version control that has really just outclassed a couple of other...">
+<meta name="twitter:title" content="Chapter 5 GitHub Speak | Computational Programming for the Social Sciences">
+<meta name="twitter:description" content="Git is a particular system of version control that has really just outclassed a couple of other possible systems. Because of the abundance of people already using Git, the number of Git users has...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -45,12 +45,13 @@
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
 <li><a class="" href="ch2.html"><span class="header-section-number">2</span> Getting Started</a></li>
 <li><a class="" href="ch3.html"><span class="header-section-number">3</span> Documentation with Markdown and LATEX</a></li>
-<li><a class="active" href="ch4.html"><span class="header-section-number">4</span> Version Control with GitHub in R and GitHub Desktop</a></li>
-<li><a class="" href="ch5.html"><span class="header-section-number">5</span> Basic R Syntax, Data Types, and Structures</a></li>
-<li><a class="" href="ch6.html"><span class="header-section-number">6</span> Functions, Packages, and Doing Stuff with Data</a></li>
-<li><a class="" href="ch7.html"><span class="header-section-number">7</span> Working with Existing Data + Making Homebases for R</a></li>
-<li><a class="" href="ch8.html"><span class="header-section-number">8</span> Beyond Base R: Exploring the tidyverse</a></li>
-<li><a class="" href="ch9.html"><span class="header-section-number">9</span> Data Visualization and ggplot2</a></li>
+<li><a class="" href="ch4.html"><span class="header-section-number">4</span> Version Control with GitHub in R and GitHub Desktop</a></li>
+<li><a class="active" href="github-speak.html"><span class="header-section-number">5</span> GitHub Speak</a></li>
+<li><a class="" href="ch5.html"><span class="header-section-number">6</span> Basic R Syntax, Data Types, and Structures</a></li>
+<li><a class="" href="ch6.html"><span class="header-section-number">7</span> Functions, Packages, and Doing Stuff with Data</a></li>
+<li><a class="" href="ch7.html"><span class="header-section-number">8</span> Working with Existing Data + Making Homebases for R</a></li>
+<li><a class="" href="ch8.html"><span class="header-section-number">9</span> Beyond Base R: Exploring the tidyverse</a></li>
+<li><a class="" href="ch9.html"><span class="header-section-number">10</span> Data Visualization and ggplot2</a></li>
 </ul>
 
         <div class="book-extra">
@@ -58,18 +59,10 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ch4" class="section level1" number="4">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="github-speak" class="section level1" number="5">
 <h1>
-<span class="header-section-number">4</span> Version Control with GitHub in R and GitHub Desktop<a class="anchor" aria-label="anchor" href="#ch4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5</span> GitHub Speak<a class="anchor" aria-label="anchor" href="#github-speak"><i class="fas fa-link"></i></a>
 </h1>
-<p>In this chapter:</p>
-<ul>
-<li>Very direct: how to fuse RStudio with Github for version control</li>
-</ul>
-<div id="github-speak" class="section level2" number="4.1">
-<h2>
-<span class="header-section-number">4.1</span> GitHub Speak<a class="anchor" aria-label="anchor" href="#github-speak"><i class="fas fa-link"></i></a>
-</h2>
 <p>Git is a particular system of version control that has really just outclassed a couple of other possible systems. Because of the abundance of people already using Git, the number of Git users has compounded and the interfaces for Git (such as Github) have allowed people to use their version control systems beyond the call of just a typical workflow.</p>
 <p>Git works off of a system of repositories and branches that are kept in a remote directory while you edit the local files. <strong>Repositories</strong> are project files– an umbrella file that stores files of different classes pertaining to a similar project such as a research paper, programming package, or database. Typically, a Git repository will be based off an existing file directory in your computer. Each repository has a <strong>main branch</strong> that is the working branch. That is, the branch where you will house user-ready files. In version control systems like Git, you will typically use a system of branches to develop and edit additional materials that you will later merge with the main branch.</p>
 <p>In this process of merging and editing there are a couple of verbs that come up that you should familiarize yourself with, these are not necessarily the exact commands, but are part of the common parlance of working with Git.</p>
@@ -80,16 +73,12 @@
 <li><p>Commit</p></li>
 </ol>
 </div>
-</div>
   <div class="chapter-nav">
-<div class="prev"><a href="ch3.html"><span class="header-section-number">3</span> Documentation with Markdown and LATEX</a></div>
-<div class="next"><a href="ch5.html"><span class="header-section-number">5</span> Basic R Syntax, Data Types, and Structures</a></div>
+<div class="prev"><a href="ch4.html"><span class="header-section-number">4</span> Version Control with GitHub in R and GitHub Desktop</a></div>
+<div class="next"><a href="ch5.html"><span class="header-section-number">6</span> Basic R Syntax, Data Types, and Structures</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ch4"><span class="header-section-number">4</span> Version Control with GitHub in R and GitHub Desktop</a></li>
-<li><a class="nav-link" href="#github-speak"><span class="header-section-number">4.1</span> GitHub Speak</a></li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#github-speak"><span class="header-section-number">5</span> GitHub Speak</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

@@ -7,6 +7,7 @@ r
 rstudio
 navigating-rstudio
 why-r
+installing-github-desktop
 installing-and-familiarizing-yourself-with-python
 python
 pycharm-ide
@@ -21,6 +22,7 @@ exercise
 adding-dimension-to-a-base-document
 exercise-1
 ch4
+github-speak
 ch5
 writing-things-in-r
 some-additional-conventions

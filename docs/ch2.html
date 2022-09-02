@@ -45,7 +45,7 @@
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
 <li><a class="active" href="ch2.html"><span class="header-section-number">2</span> Getting Started</a></li>
 <li><a class="" href="ch3.html"><span class="header-section-number">3</span> Documentation with Markdown and LATEX</a></li>
-<li><a class="" href="ch4.html"><span class="header-section-number">4</span> Integrating R with Github</a></li>
+<li><a class="" href="ch4.html"><span class="header-section-number">4</span> Version Control with GitHub in R and GitHub Desktop</a></li>
 <li><a class="" href="ch5.html"><span class="header-section-number">5</span> Basic R Syntax, Data Types, and Structures</a></li>
 <li><a class="" href="ch6.html"><span class="header-section-number">6</span> Functions, Packages, and Doing Stuff with Data</a></li>
 <li><a class="" href="ch7.html"><span class="header-section-number">7</span> Working with Existing Data + Making Homebases for R</a></li>
@@ -129,20 +129,29 @@
 <p>R’s package diversity, data visualization capabilities, and relative age to other programs are also reasons that we might argue for the emphasis on R. Other open source languages, such as Python, are quickly becoming relevant to social scientists in both academic and non-academic contexts. However, these languages are not yet as widely popular. Therefore, it may take some time before languages such as Python become as accessible and necessary for training in quantitative social science.</p>
 </div>
 </div>
-<div id="installing-and-familiarizing-yourself-with-python" class="section level2" number="2.2">
+<div id="installing-github-desktop" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">2.2</span> Installing and Familiarizing Yourself with Python<a class="anchor" aria-label="anchor" href="#installing-and-familiarizing-yourself-with-python"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Installing GitHub Desktop<a class="anchor" aria-label="anchor" href="#installing-github-desktop"><i class="fas fa-link"></i></a>
+</h2>
+<p>In a couple of chapters, you will encounter a program called GitHub. Git and the GitHub platform are means of version control– systematic and thorough means of managing different iterations of project materials. Version control generally allows you to file versions of different data, documentation, and other project artifacts through a pipeline that keeps track of history and allow you to remark on changes and updates as necessary.</p>
+<p>GitHub is a particularly robust platform for version control, wherein there are multiple ways to interact with the overarching system, Git. There are really a couple of different ways that you you can manage Git– via the Command Line and Shell (higher learning curve), in R, or via Github Desktop (somewhat less of a learning curve). Personally, I like to use an interface so I have more visual cues about what is coming in and going out.</p>
+<p>To begin with GitHub, you’ll need to create and account on the <a href="https://github.com/">GitHub website</a>. It is possible that you just work entirely from the website, this is probably the option that will be best fit for some of you. But, given the steeper learning curve of the Desktop version and beyond it’s preferable that you learn the more difficult options in a structure environment. After creating your GitHub account, you can <a href="https://desktop.github.com/">download GitHub Desktop</a>.</p>
+<p>Once you have downloaded GitHub on to your machine, you will be able to log in to the GitHub account that you created. If the sign in menu does not pop up automatically, you can access the sign in via the <strong>Preferences</strong> menu. In a few chapters you will have the full rundown of Github via R and Desktop, so read more there!</p>
+</div>
+<div id="installing-and-familiarizing-yourself-with-python" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Installing and Familiarizing Yourself with Python<a class="anchor" aria-label="anchor" href="#installing-and-familiarizing-yourself-with-python"><i class="fas fa-link"></i></a>
 </h2>
 <p>As graduate education modernizes itself toward training for both academic and non-academic jobs, teaching programming literacy beyond just R is essential. So, we will also cover some basics of the Python coding language as well. As mentioned, Python is newer on the scene generally and especially among social sciences. This means that resources available to make Python legible to social scientists in training is still being built up. We hope that some of the text here at least exposes you enough to Python and one available Python interface such that you might pursue further training later on, if desired.</p>
-<div id="python" class="section level3" number="2.2.1">
+<div id="python" class="section level3" number="2.3.1">
 <h3>
-<span class="header-section-number">2.2.1</span> Python<a class="anchor" aria-label="anchor" href="#python"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3.1</span> Python<a class="anchor" aria-label="anchor" href="#python"><i class="fas fa-link"></i></a>
 </h3>
 <p>First, if you are a Windows user you will download the latest version of <a href="https://www.python.org/downloads/">Python</a>, or at least Python 3. Just like R and RStudio, be sure to download the correct version for your operating system. Mac and Linux users already have Python, but if you run into any problems just try and download Python. Once you have downloaded Python, make sure you downloaded it to a location on your computer that makes it easy to find again. Otherwise, there is no need to open any program after download.</p>
 </div>
-<div id="pycharm-ide" class="section level3" number="2.2.2">
+<div id="pycharm-ide" class="section level3" number="2.3.2">
 <h3>
-<span class="header-section-number">2.2.2</span> PyCharm IDE<a class="anchor" aria-label="anchor" href="#pycharm-ide"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3.2</span> PyCharm IDE<a class="anchor" aria-label="anchor" href="#pycharm-ide"><i class="fas fa-link"></i></a>
 </h3>
 <p>Just like with R and RStudio, we will rely on an integrated development environment to help cushion the interaction with Python, which otherwise has a very minimalist interface. <a href="https://www.jetbrains.com/pycharm/">PyCharm</a> is a great IDE for beginners that don’t want to stick to RStudio for Python projects, but still want a well-built environment. We encourage you to check out Reddit and other message board threads on what IDEs might be better suited for your particular goals with Python as you become more familiar with it. Visit the PyCharm site, download the suitable version, and read through the documentation. There are a couple of different versions for download, we recommend that you opt for the open-source <em>Community</em> version. Though PyCharm is more developed than other potential interfaces for Python, the structure is still quite opaque for those new to coding– even for those of us that have been around R for a while. So read through what you can about getting started, and when we revisit Python in later chapters, we hope that things will come together smoothly.</p>
 <p>When you open PyCharm, you will be prompted to start a new project, open an existing project in a local working directory, or work with a project in version control. For now, start a new project without modifying any of the additional selections in the prompt. Once you hit “Create” you will encounter the following screen:</p>
@@ -150,9 +159,9 @@
 <p>On the left hand side is a file tree, with all project related scripts and files. The right hand side is the source script or editable code. In the case that you want to start a new Python script instead of the welcome script shown here, simply choose File <span class="math inline">\(\rightarrow\)</span> New… <span class="math inline">\(\rightarrow\)</span> Python File. As you may notice, Python code files have the file format “.py”. Along the bottom edge, you will see a few options to toggle for additional panels related to version control, to dos, packages, etc. All in all, it is much like the pane system integrated into RStudio. PyCharm has additional add-ons that you can generate and customize yourself. Again, we recommend that you take a look at the documentation on the PyCharm site should you want to be more advanced in that environment.</p>
 </div>
 </div>
-<div id="moving-forward" class="section level2" number="2.3">
+<div id="moving-forward" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">2.3</span> Moving Forward<a class="anchor" aria-label="anchor" href="#moving-forward"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> Moving Forward<a class="anchor" aria-label="anchor" href="#moving-forward"><i class="fas fa-link"></i></a>
 </h2>
 <p>The remainder of this text will focus primarily on R and then later on some basics of Python. But first we are going to take a quick detour into Github and <span class="latex">L<sup>A</sup>T<sub>E</sub>X</span>: two additional software distributions that will also be important to develop scientific research both in and out of academia.</p>
 
@@ -173,13 +182,14 @@
 <li><a class="nav-link" href="#why-r"><span class="header-section-number">2.1.4</span> Why R?</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#installing-github-desktop"><span class="header-section-number">2.2</span> Installing GitHub Desktop</a></li>
 <li>
-<a class="nav-link" href="#installing-and-familiarizing-yourself-with-python"><span class="header-section-number">2.2</span> Installing and Familiarizing Yourself with Python</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#python"><span class="header-section-number">2.2.1</span> Python</a></li>
-<li><a class="nav-link" href="#pycharm-ide"><span class="header-section-number">2.2.2</span> PyCharm IDE</a></li>
+<a class="nav-link" href="#installing-and-familiarizing-yourself-with-python"><span class="header-section-number">2.3</span> Installing and Familiarizing Yourself with Python</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#python"><span class="header-section-number">2.3.1</span> Python</a></li>
+<li><a class="nav-link" href="#pycharm-ide"><span class="header-section-number">2.3.2</span> PyCharm IDE</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#moving-forward"><span class="header-section-number">2.3</span> Moving Forward</a></li>
+<li><a class="nav-link" href="#moving-forward"><span class="header-section-number">2.4</span> Moving Forward</a></li>
 </ul>
 
       <div class="book-extra">
@@ -196,7 +206,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Computational Programming for the Social Sciences</strong>" was written by Sarah Moore and Jean Clipperton. It was last built on 2022-08-31.</p>
+    <p>"<strong>Computational Programming for the Social Sciences</strong>" was written by Sarah Moore and Jean Clipperton. It was last built on 2022-09-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
