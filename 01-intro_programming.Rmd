@@ -71,6 +71,16 @@ Oftentimes, students ask *why* they will learn R rather than other potential sta
 
 R's package diversity, data visualization capabilities, and relative age to other programs are also reasons that we might argue for the emphasis on R. Other open source languages, such as Python, are quickly becoming relevant to social scientists in both academic and non-academic contexts. However, these languages are not yet as widely popular. Therefore, it may take some time before languages such as Python become as accessible and necessary for training in quantitative social science.  
 
+## Installing GitHub Desktop
+
+In a couple of chapters, you will encounter a program called GitHub. Git and the GitHub platform are means of version control-- systematic and thorough means of managing different iterations of project materials. Version control generally allows you to file versions of different data, documentation, and other project artifacts through a pipeline that keeps track of history and allow you to remark on changes and updates as necessary. 
+
+GitHub is a particularly robust platform for version control, wherein there are multiple ways to interact with the overarching system, Git. There are really a couple of different ways that you you can manage Git-- via the Command Line and Shell (higher learning curve), in R, or via Github Desktop (somewhat less of a learning curve). Personally, I like to use an interface so I have more visual cues about what is coming in and going out. 
+
+To begin with GitHub, you'll need to create and account on the [GitHub website](https://github.com/). It is possible that you just work entirely from the website, this is probably the option that will be best fit for some of you. But, given the steeper learning curve of the Desktop version and beyond it's preferable that you learn the more difficult options in a structure environment. After creating your GitHub account, you can [download GitHub Desktop](https://desktop.github.com/). 
+
+Once you have downloaded GitHub on to your machine, you will be able to log in to the GitHub account that you created. If the sign in menu does not pop up automatically, you can access the sign in via the **Preferences** menu. In a few chapters you will have the full rundown of Github via R and Desktop, so read more there! 
+
 ## Installing and Familiarizing Yourself with Python 
 
 As graduate education modernizes itself toward training for both academic and non-academic jobs, teaching programming literacy beyond just R is essential. So, we will also cover some basics of the Python coding language as well. As mentioned, Python is newer on the scene generally and especially among social sciences. This means that resources available to make Python legible to social scientists in training is still being built up. We hope that some of the text here at least exposes you enough to Python and one available Python interface such that you might pursue further training later on, if desired. 
