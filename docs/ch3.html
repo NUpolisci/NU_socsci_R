@@ -41,17 +41,7 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome!</a></li>
-<li><a class="" href="ch2.html"><span class="header-section-number">2</span> Getting Started</a></li>
-<li><a class="active" href="ch3.html"><span class="header-section-number">3</span> Documentation with Markdown and LATEX</a></li>
-<li><a class="" href="ch4.html"><span class="header-section-number">4</span> Version Control with GitHub in R and GitHub Desktop</a></li>
-<li><a class="" href="ch5.html"><span class="header-section-number">5</span> Basic R Syntax, Data Types, and Structures</a></li>
-<li><a class="" href="ch6.html"><span class="header-section-number">6</span> Functions, Packages, and Doing Stuff with Data</a></li>
-<li><a class="" href="ch7.html"><span class="header-section-number">7</span> Working with Existing Data + Making Homebases for R</a></li>
-<li><a class="" href="ch8.html"><span class="header-section-number">8</span> Beyond Base R: Exploring the tidyverse</a></li>
-<li><a class="" href="ch9.html"><span class="header-section-number">9</span> Data Visualization and ggplot2</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 3</span> Documentation with Markdown and LATEX</a></li></ul>
 
         <div class="book-extra">
           
@@ -170,41 +160,41 @@
 <p>This section will assume that you are still viewing the same tutorial document accessed in the previous section. Here we will discuss a bit about the composite elements of a TeX document required to successfully compile. A compiled TeX file is one that made the journey from plain file to PDF rendered document.</p>
 <p>The beginning of every .tex file will start with a <strong>preamble</strong>. The preamble is the section where you specify the document class, details you would like to implement throughout the document, and define the parameters of elements that might appear in the text. The preamble is also important for indicating which packages that you would like LaTeX to use to create certain features of your text. Packages are simply additional code components developed to make certain features more feasible without requiring that users code all the specifications themselves. Different packages are useful for modifying the design and layout of things like tables or sections with multiple column.</p>
 <p>In the tutorial .tex document on Overleaf, the following text composes the preamble, which is not published text. After the preamble, the code <code>\begin{document}</code> begins the section of published text.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="ch3.html#cb2-1" aria-hidden="true" tabindex="-1"></a>\documentclass{article}</span>
-<span id="cb2-2"><a href="ch3.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="ch3.html#cb2-3" aria-hidden="true" tabindex="-1"></a>% Language setting</span>
-<span id="cb2-4"><a href="ch3.html#cb2-4" aria-hidden="true" tabindex="-1"></a>% Replace <span class="st">`</span><span class="at">english' with e.g. </span><span class="st">`</span>spanish<span class="st">' to change the document language</span></span>
-<span id="cb2-5"><a href="ch3.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">\usepackage[english]{babel}</span></span>
-<span id="cb2-6"><a href="ch3.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="ch3.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">% Set page size and margins</span></span>
-<span id="cb2-8"><a href="ch3.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">% Replace `letterpaper'</span> with <span class="st">`</span><span class="at">a4paper' for UK/EU standard size</span></span>
-<span id="cb2-9"><a href="ch3.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}</span></span>
-<span id="cb2-10"><a href="ch3.html#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="ch3.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">% Useful packages</span></span>
-<span id="cb2-12"><a href="ch3.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">\usepackage{amsmath}</span></span>
-<span id="cb2-13"><a href="ch3.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">\usepackage{graphicx}</span></span>
-<span id="cb2-14"><a href="ch3.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">\usepackage[colorlinks=true, allcolors=blue]{hyperref}</span></span>
-<span id="cb2-15"><a href="ch3.html#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="ch3.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="sc">\t</span><span class="at">itle{Your Paper}</span></span>
-<span id="cb2-17"><a href="ch3.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="sc">\a</span><span class="at">uthor{You}</span></span>
-<span id="cb2-18"><a href="ch3.html#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="ch3.html#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="sc">\b</span><span class="at">egin{document}</span></span></code></pre></div>
-<p>Two elements of this preamble are absolutely necessary in all cases. The codes <code>\documentclass{}</code> and <code>\begin{document}</code> are required of all documents. Additionally, <code>\end{document}</code> is always required at the end of the text to ensure that the document compiles. The remaining packages are loaded in via the command <code>\usepackage{}</code>. We won’t cover anything else related to class=“latex”&gt;L<sup>A</sup>T<sub>E</sub>X packages here, as there are a multitude of them and each has their own documentation</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="ch3.html#cb1-1" aria-hidden="true" tabindex="-1"></a>\documentclass{article}</span>
+<span id="cb1-2"><a href="ch3.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="ch3.html#cb1-3" aria-hidden="true" tabindex="-1"></a>% Language setting</span>
+<span id="cb1-4"><a href="ch3.html#cb1-4" aria-hidden="true" tabindex="-1"></a>% Replace <span class="st">`</span><span class="at">english' with e.g. </span><span class="st">`</span>spanish<span class="st">' to change the document language</span></span>
+<span id="cb1-5"><a href="ch3.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">\usepackage[english]{babel}</span></span>
+<span id="cb1-6"><a href="ch3.html#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="ch3.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">% Set page size and margins</span></span>
+<span id="cb1-8"><a href="ch3.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">% Replace `letterpaper'</span> with <span class="st">`</span><span class="at">a4paper' for UK/EU standard size</span></span>
+<span id="cb1-9"><a href="ch3.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}</span></span>
+<span id="cb1-10"><a href="ch3.html#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="ch3.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">% Useful packages</span></span>
+<span id="cb1-12"><a href="ch3.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">\usepackage{amsmath}</span></span>
+<span id="cb1-13"><a href="ch3.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">\usepackage{graphicx}</span></span>
+<span id="cb1-14"><a href="ch3.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">\usepackage[colorlinks=true, allcolors=blue]{hyperref}</span></span>
+<span id="cb1-15"><a href="ch3.html#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="ch3.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="sc">\t</span><span class="at">itle{Your Paper}</span></span>
+<span id="cb1-17"><a href="ch3.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="sc">\a</span><span class="at">uthor{You}</span></span>
+<span id="cb1-18"><a href="ch3.html#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="ch3.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="sc">\b</span><span class="at">egin{document}</span></span></code></pre></div>
+<p>Two elements of this preamble are absolutely necessary in all cases. The codes <code>\documentclass{}</code> and <code>\begin{document}</code> are required of all documents. Additionally, <code>\end{document}</code> is always required at the end of the text to ensure that the document compiles. The remaining packages are loaded in via the command <code>\usepackage{}</code>. We won’t cover anything else related to <span>&lt;class=“latex”&gt;L<sup>A</sup>T<sub>E</sub>X</span> packages here, as there are a multitude of them and each has their own documentation</p>
 <p>The text between the commands <code>\begin{document}</code> and <code>\end{document}</code> is the <strong>body</strong>. The body of the text is exactly as you specify it to be! While this is where you will type all of the relevant text you want to typeset, you will also see the body littered with <em>commands</em> and <em>comments.</em> Throughout a .tex file a command will always begin with a back slash <code>\</code> followed by the chosen command. To ensure that the command runs properly, you will have to ensure that the accompanying package is included in the preamble. For example, if I wanted to typeset a table with a caption I would specify the command <code>\begin{table}</code> before the table and formatting text and specify the <code>\end{table}</code> at the end, the <code>\caption{}</code> command falling somewhere between.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="ch3.html#cb3-1" aria-hidden="true" tabindex="-1"></a>\begin{table} </span>
-<span id="cb3-2"><a href="ch3.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="ch3.html#cb3-3" aria-hidden="true" tabindex="-1"></a>\caption{Here is a table about interesting activities <span class="cf">in</span> Chicago}</span>
-<span id="cb3-4"><a href="ch3.html#cb3-4" aria-hidden="true" tabindex="-1"></a>\begin{tabularx}{<span class="sc">|</span>c<span class="sc">|</span>c<span class="sc">|</span>}</span>
-<span id="cb3-5"><a href="ch3.html#cb3-5" aria-hidden="true" tabindex="-1"></a>\hline </span>
-<span id="cb3-6"><a href="ch3.html#cb3-6" aria-hidden="true" tabindex="-1"></a>Actvity <span class="sc">&amp;</span> Neighborhood \\ </span>
-<span id="cb3-7"><a href="ch3.html#cb3-7" aria-hidden="true" tabindex="-1"></a>\hline </span>
-<span id="cb3-8"><a href="ch3.html#cb3-8" aria-hidden="true" tabindex="-1"></a>WhirlyBall <span class="sc">&amp;</span> Logan Square \\</span>
-<span id="cb3-9"><a href="ch3.html#cb3-9" aria-hidden="true" tabindex="-1"></a>\hline </span>
-<span id="cb3-10"><a href="ch3.html#cb3-10" aria-hidden="true" tabindex="-1"></a>Nature Conservatory <span class="sc">&amp;</span> Lincoln Park or Garfield Park \\</span>
-<span id="cb3-11"><a href="ch3.html#cb3-11" aria-hidden="true" tabindex="-1"></a>\hline </span>
-<span id="cb3-12"><a href="ch3.html#cb3-12" aria-hidden="true" tabindex="-1"></a>\end{tabularx}</span>
-<span id="cb3-13"><a href="ch3.html#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="ch3.html#cb3-14" aria-hidden="true" tabindex="-1"></a>\end{table}</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="ch3.html#cb2-1" aria-hidden="true" tabindex="-1"></a>\begin{table} </span>
+<span id="cb2-2"><a href="ch3.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="ch3.html#cb2-3" aria-hidden="true" tabindex="-1"></a>\caption{Here is a table about interesting activities <span class="cf">in</span> Chicago}</span>
+<span id="cb2-4"><a href="ch3.html#cb2-4" aria-hidden="true" tabindex="-1"></a>\begin{tabularx}{<span class="sc">|</span>c<span class="sc">|</span>c<span class="sc">|</span>}</span>
+<span id="cb2-5"><a href="ch3.html#cb2-5" aria-hidden="true" tabindex="-1"></a>\hline </span>
+<span id="cb2-6"><a href="ch3.html#cb2-6" aria-hidden="true" tabindex="-1"></a>Actvity <span class="sc">&amp;</span> Neighborhood \\ </span>
+<span id="cb2-7"><a href="ch3.html#cb2-7" aria-hidden="true" tabindex="-1"></a>\hline </span>
+<span id="cb2-8"><a href="ch3.html#cb2-8" aria-hidden="true" tabindex="-1"></a>WhirlyBall <span class="sc">&amp;</span> Logan Square \\</span>
+<span id="cb2-9"><a href="ch3.html#cb2-9" aria-hidden="true" tabindex="-1"></a>\hline </span>
+<span id="cb2-10"><a href="ch3.html#cb2-10" aria-hidden="true" tabindex="-1"></a>Nature Conservatory <span class="sc">&amp;</span> Lincoln Park or Garfield Park \\</span>
+<span id="cb2-11"><a href="ch3.html#cb2-11" aria-hidden="true" tabindex="-1"></a>\hline </span>
+<span id="cb2-12"><a href="ch3.html#cb2-12" aria-hidden="true" tabindex="-1"></a>\end{tabularx}</span>
+<span id="cb2-13"><a href="ch3.html#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="ch3.html#cb2-14" aria-hidden="true" tabindex="-1"></a>\end{table}</span></code></pre></div>
 <p>You might also want to comment on your code, or put notes as to what certain packages do as in the preamble above. To do so, you simply begin the comment text with a percentage symbol <code>%</code>. The comment can begin anywhere in the text that you want and is stopped when a new line of text is started (i.e. you must hit <em>Return</em> to end the comment line).</p>
 <div id="exercise" class="section level3" number="3.4.1">
 <h3>
@@ -245,24 +235,11 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="ch2.html"><span class="header-section-number">2</span> Getting Started</a></div>
-<div class="next"><a href="ch4.html"><span class="header-section-number">4</span> Version Control with GitHub in R and GitHub Desktop</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ch3"><span class="header-section-number">3</span> Documentation with Markdown and LATEX</a></li>
-<li><a class="nav-link" href="#markdown-a-multi-use-tool"><span class="header-section-number">3.1</span> Markdown: A Multi-Use Tool</a></li>
-<li>
-<a class="nav-link" href="#latex-its-pronounced-lah-tekh-or-lay-tekh"><span class="header-section-number">3.2</span> LATEX: It’s pronounced LAH-tekh or LAY-tekh</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#getting-set-up-on-overleaf"><span class="header-section-number">3.2.1</span> Getting Set Up on Overleaf</a></li></ul>
-</li>
-<li><a class="nav-link" href="#your-first-latex-overleaf-project"><span class="header-section-number">3.3</span> Your First LATEX Overleaf Project</a></li>
-<li>
-<a class="nav-link" href="#the-anatomy-of-a-tex-style-document"><span class="header-section-number">3.4</span> The Anatomy of a TeX-style document</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#exercise"><span class="header-section-number">3.4.1</span> Exercise</a></li></ul>
-</li>
-<li>
-<a class="nav-link" href="#adding-dimension-to-a-base-document"><span class="header-section-number">3.5</span> Adding dimension to a base document</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#exercise-1"><span class="header-section-number">3.5.1</span> Exercise</a></li></ul>
-</li>
-</ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -286,34 +263,6 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>
