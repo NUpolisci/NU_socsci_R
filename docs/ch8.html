@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 8 Beyond Base R: Exploring the tidyverse | Computational Programming for the Social Sciences</title>
 <meta name="author" content="Sarah Moore and Jean Clipperton">
-<meta name="description" content="In this chapter: Why tidyverse? The pipe %&gt;% to chain functions and saving intermediate objects join, filter, select, and other modes of merging or subsetting data Data manipulation, wrangling,...">
+<meta name="description" content="In this chapter: Why tidyverse? The pipe %&gt;% to chain functions and saving intermediate objects dplyr for data manipulation and wrangling Additional dplyr functions for joining and transforming...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="Chapter 8 Beyond Base R: Exploring the tidyverse | Computational Programming for the Social Sciences">
 <meta property="og:type" content="book">
-<meta property="og:description" content="In this chapter: Why tidyverse? The pipe %&gt;% to chain functions and saving intermediate objects join, filter, select, and other modes of merging or subsetting data Data manipulation, wrangling,...">
+<meta property="og:description" content="In this chapter: Why tidyverse? The pipe %&gt;% to chain functions and saving intermediate objects dplyr for data manipulation and wrangling Additional dplyr functions for joining and transforming...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 8 Beyond Base R: Exploring the tidyverse | Computational Programming for the Social Sciences">
-<meta name="twitter:description" content="In this chapter: Why tidyverse? The pipe %&gt;% to chain functions and saving intermediate objects join, filter, select, and other modes of merging or subsetting data Data manipulation, wrangling,...">
+<meta name="twitter:description" content="In this chapter: Why tidyverse? The pipe %&gt;% to chain functions and saving intermediate objects dplyr for data manipulation and wrangling Additional dplyr functions for joining and transforming...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -66,12 +66,11 @@
 <ul>
 <li><p>Why <code>tidyverse</code>?</p></li>
 <li><p>The pipe <code>%&gt;%</code> to chain functions and saving intermediate objects</p></li>
-<li><p><code>join</code>, <code>filter</code>, <code>select</code>, and other modes of merging or subsetting data</p></li>
-<li><p>Data manipulation, wrangling, and transformation</p></li>
-<li><p>Conventions of tidyverse programming</p></li>
+<li><p><code>dplyr</code> for data manipulation and wrangling</p></li>
+<li><p>Additional <code>dplyr</code> functions for joining and transforming data</p></li>
 <li><p>An alternative to <code>tidyverse</code>: <code>data.table</code></p></li>
 </ul>
-<p>This chapter will largely rely on <a href="https://r4ds.had.co.nz/transform.html">Wickham and Grolemund’s R for Data Science</a> for its material. This is a great text that is great to revisit once you have mastered some of the basic concepts of programming in R.</p>
+<p>This chapter will largely rely on <a href="https://r4ds.had.co.nz/transform.html">Wickham and Grolemund’s R for Data Science</a> and Northwestern’s Research and Computing Service’s workshop on <a href="https://nuitrcs.github.io/r-tidyverse/html/intro.html#setup"><code>tidyverse</code></a>.for its material. These are great resources to revisit once you have mastered some of the basic concepts of programming in R.</p>
 <div id="what-why-how-of-tidyverse" class="section level2" number="8.1">
 <h2>
 <span class="header-section-number">8.1</span> What, why, how of <code>tidyverse</code><a class="anchor" aria-label="anchor" href="#what-why-how-of-tidyverse"><i class="fas fa-link"></i></a>
@@ -93,14 +92,114 @@
 <span class="header-section-number">8.1.1</span> Just one more thing!<a class="anchor" aria-label="anchor" href="#just-one-more-thing"><i class="fas fa-link"></i></a>
 </h3>
 <p>Before we move an inch further into this chapter, recall how to install and load packages from your R library as we went over in Chapter <a href="ch6.html#ch6">6</a>. If you did not install the <code>tidyverse</code> during those activities, do so now! The remainder of this chapter (and much of this text), will assume that you are working with <code>tidyverse</code> functions. After you make sure that you did install <code>tidyverse</code>, make sure that it is loaded via the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function.</p>
-<p>Next, you will load the dataset <code>mtcars</code> that is already available in Base R. To do so merely run the function <code>data('mtcars')</code>. This is a play dataset with data from the 1974 <em>Motor Trend US</em> magazine that accounts for different specifications across 32 different cars. We realize this has nothing to do with politics or political science, <strong>BUT</strong> the dataset is really accessible, fairly small, and has data that span the various types we have already covered in previous chapters. There are also many examples out there using this dataset, so hopefully if you have any more questions you can find answers applied to the <code>mtcars</code> data, making it a bit more comfortable to follow along.</p>
+<p>Next, you will load the dataset <code>mtcars</code> that is already available in Base R. To do so merely run the function <code>data('mtcars')</code>. This is a play dataset with data from the 1974 <em>Motor Trend US</em> magazine that accounts for 11 different specifications across 32 different cars. We realize this has nothing to do with social science, <strong>BUT</strong> the dataset is really accessible and fairly small. There are also many examples out there using this dataset, so hopefully if you have any more questions you can find answers applied to the <code>mtcars</code> data, making it a bit more comfortable to follow along.</p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># load the package</span></span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+## ✔ tibble  3.1.8     ✔ dplyr   1.0.9
+## ✔ tidyr   1.2.0     ✔ stringr 1.4.1
+## ✔ readr   2.1.2     ✔ forcats 0.5.1
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span> <span class="co"># load the data from the package</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="co"># take a quick look at the data </span></span></code></pre></div>
+<pre><code>## Rows: 32
+## Columns: 11
+## $ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…
+## $ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…
+## $ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…
+## $ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…
+## $ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…
+## $ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…
+## $ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…
+## $ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…
+## $ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…
+## $ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…
+## $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…</code></pre>
+<p><strong>Based on this glimpse of the data, what can we discern about its dimensions and the data types?</strong></p>
 </div>
 </div>
-<div id="the-pipe" class="section level2" number="8.2">
+<div id="the-pipe-and-some-basic-conventions" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">8.2</span> The Pipe <code>%&gt;%</code><a class="anchor" aria-label="anchor" href="#the-pipe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> The Pipe <code>%&gt;%</code> and Some Basic Conventions<a class="anchor" aria-label="anchor" href="#the-pipe-and-some-basic-conventions"><i class="fas fa-link"></i></a>
 </h2>
+<p>One of the most consequential features of programming with <code>tidyverse</code> is the piping feature. The pipe, <code>%&gt;%</code> or <code>|&gt;</code>, allows us to chain together functions to create meaningful function pipelines. The pipe is accessible with the <code>command+shift+M</code> on the Mac or <code>ctrl+shift+M</code> on Windows. What this means is that we can start with a basic data object, particularly a dataframe or tibble (<code>tidyverse</code>’s dataframe equivalent), and use different functions in a coordinated manner to achieve an efficient outcome with the same data. If we like a function to a sentence, we can liken a piped function to a paragraph.</p>
+<p>While the pipe is more efficient than piecemeal function writing, it does require that we think a bit differently about <em>how</em> we program. In a pipe we think about the formula <code>data %&gt;% function(...) -&gt; output</code>, wherein the input is then on the LHS and our output is on the RHS, the functions we want to chain fill in the middle. In case this isn’t clicking, take the example below.</p>
+<p>Let’s say we want to summarize the miles per gallon of the vehicles in the <code>mtcars</code> dataset, grouped by the number of cylinders in the car. This calls for using two functions: <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>.</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># start with the data input </span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="co"># specify the grouping variable </span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_mpg<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span><span class="op">)</span><span class="op">-&gt;</span> <span class="va">mean_mpg</span> <span class="co"># chain the function that summarizes and assign an output </span></span>
+<span></span>
+<span><span class="va">mean_mpg</span> <span class="co"># print the resulting object </span></span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##     cyl mean_mpg
+##   &lt;dbl&gt;    &lt;dbl&gt;
+## 1     4     26.7
+## 2     6     19.7
+## 3     8     15.1</code></pre>
+<p>This piped command assigns the calculated values to a tibble with the group means across each of the cylinder values. Also notice that we were able to name our column for the mean mpg <em>within</em> the summarize function.</p>
+<p>Aside from managing multiple functions at once, as we go into further detail below, piping is a great option for saving intermediate objects. Intermediate objects might be subsets that have various parameters on the data, summarized parts of your data, or data that has otherwise been transformed that does not fit the existing dimensions of your data. It’s likely that you will not want these auxiliary objects to be merged with your data, or it may be impossible to merge the two. The piping feature in <code>tidyverse</code> allows for a structured approach to saving objects like this for further use in your programming.</p>
+</div>
+<div id="dplyr-functions-for-data-wrangling" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> <code>dplyr</code> Functions for Data Wrangling<a class="anchor" aria-label="anchor" href="#dplyr-functions-for-data-wrangling"><i class="fas fa-link"></i></a>
+</h2>
+<div id="filter" class="section level3" number="8.3.1">
+<h3>
+<span class="header-section-number">8.3.1</span> <code>filter</code><a class="anchor" aria-label="anchor" href="#filter"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="select" class="section level3" number="8.3.2">
+<h3>
+<span class="header-section-number">8.3.2</span> <code>select</code><a class="anchor" aria-label="anchor" href="#select"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="mutate" class="section level3" number="8.3.3">
+<h3>
+<span class="header-section-number">8.3.3</span> <code>mutate</code><a class="anchor" aria-label="anchor" href="#mutate"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="group_by" class="section level3" number="8.3.4">
+<h3>
+<span class="header-section-number">8.3.4</span> <code>group_by</code><a class="anchor" aria-label="anchor" href="#group_by"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="summarize" class="section level3" number="8.3.5">
+<h3>
+<span class="header-section-number">8.3.5</span> <code>summarize</code><a class="anchor" aria-label="anchor" href="#summarize"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="further-use-of-with-dplyrs-manipulating-functions" class="section level3" number="8.3.6">
+<h3>
+<span class="header-section-number">8.3.6</span> Further use of %&gt;% with <code>dplyr</code>’s manipulating functions<a class="anchor" aria-label="anchor" href="#further-use-of-with-dplyrs-manipulating-functions"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+</div>
+<div id="dplyr-for-merging-and-transforming-data" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> <code>dplyr</code> for merging and transforming data<a class="anchor" aria-label="anchor" href="#dplyr-for-merging-and-transforming-data"><i class="fas fa-link"></i></a>
+</h2>
+<div id="join" class="section level3" number="8.4.1">
+<h3>
+<span class="header-section-number">8.4.1</span> <code>join</code><a class="anchor" aria-label="anchor" href="#join"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="what-is-data-transformation" class="section level3" number="8.4.2">
+<h3>
+<span class="header-section-number">8.4.2</span> What is “data transformation”?<a class="anchor" aria-label="anchor" href="#what-is-data-transformation"><i class="fas fa-link"></i></a>
+</h3>
+<div id="data-transformation-in-dplyr" class="section level4" number="8.4.2.1">
+<h4>
+<span class="header-section-number">8.4.2.1</span> Data Transformation in <code>dplyr</code><a class="anchor" aria-label="anchor" href="#data-transformation-in-dplyr"><i class="fas fa-link"></i></a>
+</h4>
 
+</div>
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -113,7 +212,23 @@
 <li>
 <a class="nav-link" href="#what-why-how-of-tidyverse"><span class="header-section-number">8.1</span> What, why, how of tidyverse</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#just-one-more-thing"><span class="header-section-number">8.1.1</span> Just one more thing!</a></li></ul>
 </li>
-<li><a class="nav-link" href="#the-pipe"><span class="header-section-number">8.2</span> The Pipe %&gt;%</a></li>
+<li><a class="nav-link" href="#the-pipe-and-some-basic-conventions"><span class="header-section-number">8.2</span> The Pipe %&gt;% and Some Basic Conventions</a></li>
+<li>
+<a class="nav-link" href="#dplyr-functions-for-data-wrangling"><span class="header-section-number">8.3</span> dplyr Functions for Data Wrangling</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#filter"><span class="header-section-number">8.3.1</span> filter</a></li>
+<li><a class="nav-link" href="#select"><span class="header-section-number">8.3.2</span> select</a></li>
+<li><a class="nav-link" href="#mutate"><span class="header-section-number">8.3.3</span> mutate</a></li>
+<li><a class="nav-link" href="#group_by"><span class="header-section-number">8.3.4</span> group_by</a></li>
+<li><a class="nav-link" href="#summarize"><span class="header-section-number">8.3.5</span> summarize</a></li>
+<li><a class="nav-link" href="#further-use-of-with-dplyrs-manipulating-functions"><span class="header-section-number">8.3.6</span> Further use of %&gt;% with dplyr’s manipulating functions</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#dplyr-for-merging-and-transforming-data"><span class="header-section-number">8.4</span> dplyr for merging and transforming data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#join"><span class="header-section-number">8.4.1</span> join</a></li>
+<li><a class="nav-link" href="#what-is-data-transformation"><span class="header-section-number">8.4.2</span> What is “data transformation”?</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -130,7 +245,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Computational Programming for the Social Sciences</strong>" was written by Sarah Moore and Jean Clipperton. It was last built on 2022-09-02.</p>
+    <p>"<strong>Computational Programming for the Social Sciences</strong>" was written by Sarah Moore and Jean Clipperton. It was last built on 2022-09-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
