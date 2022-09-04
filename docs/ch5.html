@@ -156,7 +156,7 @@
 <h3>
 <span class="header-section-number">5.2.2</span> Boolean and Logical Operators<a class="anchor" aria-label="anchor" href="#boolean-and-logical-operators"><i class="fas fa-link"></i></a>
 </h3>
-<p>Logical and Boolean operators are also important to coding in R. Sometimes you will need to separate or join data in logical ways. Or, you might want to index through data to find if certain conditions about the data are true. A lot of this verbiage will be familiar from Chapter X in [] because these operations are an applied form of set theoretic notation. Below is a list of the most common Logical and Boolean operators and what they indicate.</p>
+<p>Logical and Boolean operators are also important to coding in R. Sometimes you will need to separate or join data in logical ways. Or, you might want to index through data to find if certain conditions about the data are true. Below is a list of the most common Logical and Boolean operators and what they indicate.</p>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
 <th align="left">Operator</th>
@@ -275,7 +275,11 @@
 <span class="header-section-number">5.4.1</span> Atomic Vectors<a class="anchor" aria-label="anchor" href="#atomic-vectors"><i class="fas fa-link"></i></a>
 </h3>
 <p>Atomic vectors are the most basic variable component in R. In the table above, you will see that atomic vectors are unidimensional and homogenous. This means that a sequence of a single type or class of data compose a vector.</p>
-<p>Data classes are the type of data that characterize each individual element of a data structure. Some data are characters or integers, and R has a different way of dealing with each of these different data classes. The following table lists all the data classes and examples of each.</p>
+<p>We can ask R to tell us what type of atomic vector our data are in two ways:
+1. Ask for <code><a href="https://rdrr.io/r/base/typeof.html">typeof()</a></code>, in which case the output is the class of the vector.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Specifying a logical function to tell us if a vector <em>is</em> or <em>is not</em> a certain class. In this case, the output is a logical <code>TRUE</code> or <code>FALSE</code>.</li>
+</ol>
 </div>
 <div id="list" class="section level3" number="5.4.2">
 <h3>

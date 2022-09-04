@@ -69,13 +69,13 @@ R's package diversity, data visualization capabilities, and relative age to othe
 
 ## Installing GitHub Desktop
 
-In a couple of chapters, you will encounter a program called GitHub. Git and the GitHub platform are means of version control-- systematic and thorough means of managing different iterations of project materials. Version control generally allows you to file versions of different data, documentation, and other project artifacts through a pipeline that keeps track of history and allow you to remark on changes and updates as necessary. 
+In a couple of chapters \@ref(ch4), you will encounter a program called GitHub. Git and the GitHub platform are means of version control-- systematic and thorough means of managing different iterations of project materials. Version control generally allows you to file versions of different data, documentation, and other project artifacts through a pipeline that keeps track of project history and will allow you to remark on changes. 
 
-GitHub is a particularly robust platform for version control, wherein there are multiple ways to interact with the overarching system, Git. There are really a couple of different ways that you you can manage Git-- via the Command Line and Shell (higher learning curve), in R, or via Github Desktop (somewhat less of a learning curve). Personally, I like to use an interface so I have more visual cues about what is coming in and going out. 
+GitHub is a particularly robust platform for version control, wherein there are multiple ways to interact with the overarching system, Git. To manage Git we can use the Command Line and Shell (higher learning curve), RStudio, or Github Desktop (somewhat less of a learning curve). Personally, I like to use an interface so I have more visual cues about what is coming in and going out, thus I opt for GitHub Desktop.
 
 To begin with GitHub, you'll need to create and account on the [GitHub website](https://github.com/). It is possible that you just work entirely from the website, this is probably the option that will be best fit for some of you. But, given the steeper learning curve of the Desktop version, it's preferable that you learn the more difficult options in a structure environment. After creating your GitHub account, you can [download GitHub Desktop](https://desktop.github.com/). 
 
-Once you have downloaded GitHub on to your machine, you will be able to log in to the GitHub account that you created. If the sign in menu does not pop up automatically, you can access the sign in via the **Preferences** menu. In a few chapters you will have the full rundown of Github via R and Desktop, so read more there!
+Once you have downloaded GitHub Desktop on to your machine, you will be able to log in to the GitHub account that you created. If the sign in menu does not pop up automatically, you can access the sign in via the **Preferences** menu. In a [few chapters]\@ref(ch4) you will have the full rundown of Github via R and Desktop, so read more there!
 
 ## Installing and Familiarizing Yourself with Python 
 

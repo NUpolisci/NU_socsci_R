@@ -14,7 +14,9 @@ In this chapter:
 
 We call the built-in functions that do not require any additional specification or installation "Base R." However, given the expansion of R's use across many fields and the rapidly evolving landscape of computational sciences, developers and programmers have built easy-to-install software distributions compatible for use as functions *within* R. We reference these additional features as **packages**. 
 
-Packages typically contain a number of different functions with a similar basic structure that are created with a similar theme or goal in mind. For example, the `plm` package is specifically for modelling panel data; that is, data that considers the same variables over time. Another example is the package `clubSandwich`, which estimates additional types of standard errors for different models and tests whether a model is still significant given the updated standard error. Other packages provide additional tools for reshaping and manipulating data, visualizing data, or dealing with less standard forms of data. 
+Packages typically contain a number of different functions with a similar basic structure that are created with a similar theme or goal in mind. For example, the `plm` package is specifically for modelling panel data; that is, data that considers the same variables over time.
+
+Another example is the package `clubSandwich`, which estimates additional types of standard errors for different models and tests whether a model is still significant given the updated standard error. Other packages provide additional tools for reshaping and manipulating data, visualizing data, or dealing with less standard forms of data. 
 
 Nowadays, Base R is really quite limited in what it can achieve relative to some of these additional packages. Therefore, literacy in what certain packages are useful for will be an important skill to develop. Here we will focus on how to install and access these additional packages, with specific emphasis on a package that will be useful in the chapters to come-- the `tidyverse` and `dplyr`. Both of these are packages that have become typical in modern data science and analysis in R.
 
@@ -34,7 +36,7 @@ install.packages('tidyverse', dependencies = T)
 
 Once you have successfully downloaded a package, you will need to tell R that you want to access that package. Much like objects, packages are only available in R memory during each session. This is to say, if you close R or turn off your computer, etc., you will need to reload every package required for each script. There are two ways to load packages. 
 
-1) First, you can simply run the function call `library()`. Notice here that unlike the `install.pacakges()` function, the `library()` call does not require that you put the package name in quotation marks. 
+1) You can simply run the function call `library()`. Notice here that unlike the `install.pacakges()` function, the `library()` call does not require that you put the package name in quotation marks. 
 
 - R has another function call for accessing packages that acts nearly the same as `library()`: `require()`. These two codes are nearly interchangeable with a few small differences, `library()` is preferred here merely out of habit.  
 
