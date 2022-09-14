@@ -69,9 +69,9 @@ bigfoot<- prof_data
 
 # need to find out what the working directory is set to 
 
-#getwd()
+getwd()
 
-#setwd()
+#setwd("/Users/sarahmoore/Desktop")
 ```
 
 ## Sort the data by date. See if you can get a by-year count of observations...
@@ -97,11 +97,14 @@ sum(bigfoot_sorted$date=="")
 
 bigfoot_sorted$date[bigfoot_sorted$date==""]<-NA
 
+sum(is.na(bigfoot_sorted$date))
+
 # once we have changed this value we will need to resort and save the arranged data. 
 
 bigfoot_sorted %>%
   arrange(date) -> bigfoot_sorted
 
+View(bigfoot_sorted)
 # can alternatively do it in descending order. which makes sens that the prof would want? 
 
 bigfoot_sorted %>%
@@ -114,10 +117,15 @@ bigfoot_sorted %>%
 # now, we can move on to the issue of the per year count. 
 
 # as it stands, the data is in Y-M-D format. we need to think through how to get the date out of there and then count the observations there. 
+install.packages("lubridate", dep = T)
+
 library(lubridate)
-ymd(bigfoot_sorted$date)-> bigfoot_sorted$date
+
+bigfoot_sorted$date <- ymd(bigfoot_sorted$date)
 
 bigfoot_sorted$year <- year(bigfoot_sorted$date)
+
+bigfoot_sorted$month <-  month(bigfoot_sorted$date)
   
 # and then count by year and save it 
 
@@ -146,6 +154,7 @@ bigfoot_sorted %>%
   count(county, state) %>% 
   arrange(desc(n)) -> bigfoot_county_n
 
+bigfoot_county_n
 ```
 
 ## Mean sightings per year 
@@ -178,9 +187,10 @@ bigfoot_sorted %>%
             mean_windspeed = mean(wind_speed, na.rm = T)) -> mean_atmospheric_var
 
 # i could also just want to select these variables in case I need to revisit them on their own later. what are some other variables i would need to give the data context? 
+names(bigfoot_sorted)
 
-#bigfoot_sorted %>%
-  #select(visibility, moon_phase, wind_speed #what else??)-> atmospheric_conditions
+bigfoot_sorted %>%
+  select(latitude, longitude, visibility, moon_phase, wind_speed, season)-> atmospheric_conditions
 
 ```
 
@@ -189,7 +199,7 @@ bigfoot_sorted %>%
 I remember that I saved that object about the descending date order data. The professor asked for the 4 most recent testimonies. 
 
 ```{r}
-
+bigfoot_desc_sorted
 ```
 
 ## Now I'll get to do some graphs :) 
@@ -197,7 +207,6 @@ I remember that I saved that object about the descending date order data. The pr
 I've heard something about `ggplot2`. I don't know anything about it, so I'm really going to copy and paste what others are doing and add in my own frills and data as I can. I'll just go back to my trusty `bigfoot_sorted`
 
 ```{r, eval= T}
-
 library(ggplot2)
 library(ggthemes)
 
@@ -208,7 +217,9 @@ bigfoot_sorted %>%
   filter(!is.na(year)) %>%
   ggplot(aes(x=season)) + 
   geom_bar() 
+```
 
+```{r, eval =T }
 # let's add a theme 
   
 bigfoot_sorted %>% 
@@ -216,7 +227,9 @@ bigfoot_sorted %>%
   ggplot(aes(x=season)) + 
   geom_bar() + 
   theme_wsj()
+```
 
+```{r, eval=T}
 # now some labels 
 
 bigfoot_sorted %>% 
@@ -225,7 +238,8 @@ bigfoot_sorted %>%
   geom_bar() + 
   labs(x= "Season", y = "Sightings per Season", title = "Seasonal Sightings of Bigfoot Across North America") + 
   theme_wsj()
-
+```
+```{r, eval= T}
 # now change some text to fit
 max(bigfoot_yearly$n)
 
@@ -233,10 +247,7 @@ bigfoot_sorted %>%
   filter(!is.na(year)) %>%
   ggplot(aes(x=season)) + 
   geom_bar() + 
-  theme_wsj()+
   labs(x= "Season", y = "Sightings per Season", title = "Seasonal Sightings\nof Bigfoot\nAcross North America")-> bigfoot_seasonal_sightings
-
-
 ```
 
 
@@ -294,17 +305,10 @@ Well ok. So, I guess I'll go to this link and download this picture on to my com
 
 # i think now I just want to save all this stuff? 
 
-write.csv(bigfoot_sorted, "/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_sorted.csv")
+setwd("/Users/sarahmoore/Desktop/bigfoot/")
+write.csv(bigfoot_sorted, "bigfoot_data_sorted.csv")
 
-write.csv(bigfoot_yearly, "/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_yearly.csv")
-
-write.csv(bigfoot_state_n, "/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_states.csv")
-
-write.csv(bigfoot_county_n, "/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_county.csv")
-
-ggsave("/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_seasonal_sightings.png", bigfoot_seasonal_sightings)
-
-ggsave("/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_year_sightings.png", yearly_bigfoot_sightings)
+ggsave("bigfoot_seasonal_sightings.png", bigfoot_seasonal_sightings)
 
 ```
 
