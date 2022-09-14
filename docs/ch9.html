@@ -92,10 +92,10 @@
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-## ✔ tibble  3.1.8     ✔ dplyr   1.0.9
-## ✔ tidyr   1.2.0     ✔ stringr 1.4.1
-## ✔ readr   2.1.2     ✔ forcats 0.5.1
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.1 
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
@@ -118,8 +118,7 @@
 ##  9 Dog          Canis carni Carn… domest…    10.1     2.9   0.333  13.9  0.07   
 ## 10 Roe deer     Capr… herbi Arti… lc          3      NA    NA      21    0.0982 
 ## # … with 73 more rows, 1 more variable: bodywt &lt;dbl&gt;, and abbreviated variable
-## #   names ¹​conservation, ²​sleep_total, ³​sleep_rem, ⁴​sleep_cycle
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
+## #   names ¹​conservation, ²​sleep_total, ³​sleep_rem, ⁴​sleep_cycle</code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">msleep</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Rows: 83
@@ -400,9 +399,347 @@
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">plot_unemployment</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_stata.html">theme_stata</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="08-data-viz_files/figure-html/unnamed-chunk-16-3.png" width="672"></div>
-<p>```</p>
+<pre><code>
+&lt;!--chapter:end:08-data-viz.Rmd--&gt;
 
+# Data Science Exercise 
+
+## "I have a job for you..." 
+
+It's late Tuesday night, the evening after your first day of graduate school, when you receive an email from a professor that you know, but like you *don't really* know. The subject is vague: "I have a job for you...".
+
+Ok... 
+
+So, you open it and read the following. 
+
+*Welcome to Northwestern! I am in need of an RA to do some data tasks. I figured that you should be learning this stuff about now,  so it might be a good opportunity to put you to work! The pay is $24/hour. Here's what I'd be asking you to do:*
+
+1. Download some [data](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-09-13/bigfoot.csv) from [this tidytuesday post](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-13). 
+
+2. Go through the data and get a feel of what the variables are about. 
+
+3. Sort the data by date. See if you can get a by-year count of observations...
+
+4. Can you also get a count of observations in each state? Do any counties have more than one observation? Which counties have the most over time? 
+
+5. What's the mean number of sightings or observations per year? 
+
+6. I need you to save the following data for me: the mean visibility, moon phase, and windspeed? 
+
+7. You'll see some testimonies included in the "observed" column. What are the 4 most recent testimonies? 
+
+8. This might be a little advanced, but maybe you can make some graphs: 
+
+  - Bar graph of observations per season (none of the base R stuff... my associates only want to see ggplot2 graphics...)
+  
+  - Line graph of observations per year since the beginning of the dataset
+  
+... the graphics would be even BETTER if we can have them ready for print. I'm thinking New York Times or  Wall Street Journal style? 
+  
+*I don't use Github, but I need to make this information accessible **FAST**. If you can push this to your GitHub repository soon, my other associates will take it from there.*
+
+You're even more puzzled than you were to begin with, but you spent too much money on your new snow boots and winter coat in preparation for Chicago winter that you *really* can't turn down the opportunity for some more money. 
+
+What's the worst that can happen? So, you get started... 
+
+## Step One: Get the Data 
+
+So, you know you need to get the data. And you remember Jennifer taught you how to load it directly from GitHub. But I kind of want to have a local copy on my computer? So I can put everything on Github later. 
+
+I'll just deal with this later...let's load in the data. Let's name the dataframe something intuitive that makes sense for now. I'll also make sure to load in the tidyverse because it seems like I'll take a look at it. I can also use `glimpse()` to view the data names and types. 
+
+
+```r
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.1 
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">prof_data</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-09-13/bigfoot.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">prof_data</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Rows: 5,021
+## Columns: 28
+## $ observed           &lt;chr&gt; "I was canoeing on the Sipsey river in Alabama. It …
+## $ location_details   &lt;chr&gt; "", "East side of Prince William Sound", "Great swa…
+## $ county             &lt;chr&gt; "Winston County", "Valdez-Chitina-Whittier County",…
+## $ state              &lt;chr&gt; "Alabama", "Alaska", "Rhode Island", "Pennsylvania"…
+## $ season             &lt;chr&gt; "Summer", "Fall", "Fall", "Summer", "Spring", "Fall…
+## $ title              &lt;chr&gt; "", "", "Report 6496: Bicycling student has night e…
+## $ latitude           &lt;dbl&gt; NA, NA, 41.45000, NA, NA, 35.30110, 39.38745, 41.29…
+## $ longitude          &lt;dbl&gt; NA, NA, -71.50000, NA, NA, -99.17020, -81.67339, -7…
+## $ date               &lt;chr&gt; "", "", "1974-09-20", "", "", "1973-09-28", "1971-0…
+## $ number             &lt;dbl&gt; 30680, 1261, 6496, 8000, 703, 9765, 4983, 31940, 56…
+## $ classification     &lt;chr&gt; "Class B", "Class A", "Class A", "Class B", "Class …
+## $ geohash            &lt;chr&gt; "", "", "drm5ucxrc0", "", "", "9y32z667yc", "dpjbj6…
+## $ temperature_high   &lt;dbl&gt; NA, NA, 78.17, NA, NA, 71.86, NA, 92.24, NA, NA, 74…
+## $ temperature_mid    &lt;dbl&gt; NA, NA, 73.425, NA, NA, 61.425, NA, 80.810, NA, NA,…
+## $ temperature_low    &lt;dbl&gt; NA, NA, 68.68, NA, NA, 50.99, NA, 69.38, NA, NA, 53…
+## $ dew_point          &lt;dbl&gt; NA, NA, 65.72, NA, NA, 51.03, NA, 67.34, 32.55, NA,…
+## $ humidity           &lt;dbl&gt; NA, NA, 0.86, NA, NA, 0.79, NA, 0.68, 0.45, NA, 0.7…
+## $ cloud_cover        &lt;dbl&gt; NA, NA, 0.86, NA, NA, 0.11, NA, 0.05, 0.00, NA, 0.6…
+## $ moon_phase         &lt;dbl&gt; NA, NA, 0.16, NA, NA, 0.07, NA, 0.76, 0.02, NA, 0.1…
+## $ precip_intensity   &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, NA, 0.0000, 0.0000, NA,…
+## $ precip_probability &lt;dbl&gt; NA, NA, 0.00, NA, NA, NA, NA, 0.00, 0.00, NA, 0.70,…
+## $ precip_type        &lt;chr&gt; "", "", "", "", "", "rain", "", "", "", "", "rain",…
+## $ pressure           &lt;dbl&gt; NA, NA, 1020.61, NA, NA, 1017.26, NA, 1016.80, 1012…
+## $ summary            &lt;chr&gt; "", "", "Foggy until afternoon.", "", "", "Partly c…
+## $ uv_index           &lt;int&gt; NA, NA, 4, NA, NA, 7, NA, 8, 8, NA, 6, 10, 6, 7, NA…
+## $ visibility         &lt;dbl&gt; NA, NA, 2.750, NA, NA, 10.000, NA, 6.922, 8.880, NA…
+## $ wind_bearing       &lt;int&gt; NA, NA, 198, NA, NA, 259, NA, 219, 285, NA, 262, 19…
+## $ wind_speed         &lt;dbl&gt; NA, NA, 6.92, NA, NA, 8.41, NA, 1.01, 4.01, NA, 0.4…</code></pre>
+<p>… So, that told me nothing. I guess I probably should have taken a look at the information about the data first? (<strong>YES, ALWAYS!</strong>).</p>
 </div>
+</div>
+<div id="check-out-the-metadata" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-13">CHECK OUT THE METADATA</a><a class="anchor" aria-label="anchor" href="#check-out-the-metadata"><i class="fas fa-link"></i></a>
+</h2>
+<p>This is a dataset… about Bigfoot? Ok, well at least it comes from a reputable-sounding source, Bigfoot Field Researchers Organization. And there’s this <a href="https://timothyrenner.github.io/datascience/2017/06/30/finding-bigfoot.html">article</a>? Great!</p>
+<p>So, I really don’t have much more information than this. The data are about Bigfoot sightings around the US and North America. There are variables about the location of the sighting, the report provided, environmental and climate data. Ok, well I guess as long as this is ethical research, it’s still research!
+Now that I know what this is, I want to save this data to my computer so I can save the changes I might make to it and don’t have to continually download it from the tidytuesday post.</p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># i want to rename the data now that I know what it's about... something that makes recall of it easy, like "bigfoot" </span></span>
+<span></span>
+<span><span class="va">bigfoot</span><span class="op">&lt;-</span> <span class="va">prof_data</span></span>
+<span></span>
+<span><span class="co"># need to find out what the working directory is set to </span></span>
+<span></span>
+<span><span class="co">#getwd()</span></span>
+<span></span>
+<span><span class="co">#setwd()</span></span></code></pre></div>
+</div>
+<div id="sort-the-data-by-date.-see-if-you-can-get-a-by-year-count-of-observations" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> Sort the data by date. See if you can get a by-year count of observations…<a class="anchor" aria-label="anchor" href="#sort-the-data-by-date.-see-if-you-can-get-a-by-year-count-of-observations"><i class="fas fa-link"></i></a>
+</h2>
+<p>Next the professor asked if I would sort the data by date and count how many reports were made by year.</p>
+<p>I think there is some verb in <code>dplyr</code> that I can use to do this… maybe <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>? I guess I can do this on the date variable, but how can I get the year out of there?</p>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># can explore more of the data if we want, but for our purposes glimpse() let us know enough (5021 obs. of 28 var.)</span></span>
+<span></span>
+<span><span class="co"># what does arrange() do? </span></span>
+<span><span class="op">?</span><span class="va">arrange</span></span>
+<span></span>
+<span><span class="co"># let's arrange the data </span></span>
+<span></span>
+<span><span class="va">bigfoot</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">bigfoot_sorted</span></span>
+<span></span>
+<span><span class="co"># you notice that there are a lot of blanks in the date column when you do this, what can we do to change these to NAs instead of blank rows? </span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">bigfoot_sorted</span><span class="op">$</span><span class="va">date</span><span class="op">==</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 976</code></pre>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bigfoot_sorted</span><span class="op">$</span><span class="va">date</span><span class="op">[</span><span class="va">bigfoot_sorted</span><span class="op">$</span><span class="va">date</span><span class="op">==</span><span class="st">""</span><span class="op">]</span><span class="op">&lt;-</span><span class="cn">NA</span></span>
+<span></span>
+<span><span class="co"># once we have changed this value we will need to resort and save the arranged data. </span></span>
+<span></span>
+<span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">bigfoot_sorted</span></span>
+<span></span>
+<span><span class="co"># can alternatively do it in descending order. which makes sens that the prof would want? </span></span>
+<span></span>
+<span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">bigfoot_desc_sorted</span></span>
+<span></span>
+<span><span class="co">##########################</span></span>
+<span></span>
+<span><span class="co"># let's stick to the ascending date arrangement</span></span>
+<span></span>
+<span><span class="co"># now, we can move on to the issue of the per year count. </span></span>
+<span></span>
+<span><span class="co"># as it stands, the data is in Y-M-D format. we need to think through how to get the date out of there and then count the observations there. </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+## Attaching package: 'lubridate'</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     date, intersect, setdiff, union</code></pre>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="va">bigfoot_sorted</span><span class="op">$</span><span class="va">date</span><span class="op">)</span><span class="op">-&gt;</span> <span class="va">bigfoot_sorted</span><span class="op">$</span><span class="va">date</span></span>
+<span></span>
+<span><span class="va">bigfoot_sorted</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">bigfoot_sorted</span><span class="op">$</span><span class="va">date</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="co"># and then count by year and save it </span></span>
+<span></span>
+<span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">bigfoot_yearly</span></span></code></pre></div>
+</div>
+<div id="now-lets-continue-to-summarize-some-of-the-data-as-the-professor-asked" class="section level2" number="9.7">
+<h2>
+<span class="header-section-number">9.7</span> Now let’s continue to summarize some of the data as the professor asked<a class="anchor" aria-label="anchor" href="#now-lets-continue-to-summarize-some-of-the-data-as-the-professor-asked"><i class="fas fa-link"></i></a>
+</h2>
+<p>So, now I have manipulated the data a bit.</p>
+<p>Now, I guess I can do most of the rest of the tasks. First, I will check out the geographical distribution like the professor asked. I want to look at the state level and the county level numbers. When we do the county-level count, let’s keep the state name so that we know where they actually are and don’t confuse similarly named counties in different states.</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># state-level count we can also arrange it in the pipe </span></span>
+<span></span>
+<span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">state</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">bigfoot_state_n</span></span>
+<span></span>
+<span><span class="co"># county-level count with state data </span></span>
+<span></span>
+<span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">county</span>, <span class="va">state</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">bigfoot_county_n</span></span></code></pre></div>
+</div>
+<div id="mean-sightings-per-year" class="section level2" number="9.8">
+<h2>
+<span class="header-section-number">9.8</span> Mean sightings per year<a class="anchor" aria-label="anchor" href="#mean-sightings-per-year"><i class="fas fa-link"></i></a>
+</h2>
+<p>The professor had also asked for the per year sightings and then the mean number.</p>
+<p>We can also just return to the yearly intermediate dataset just to limit the amount of work we have to redo.</p>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">bigfoot_yearly</span><span class="op">$</span><span class="va">n</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> </span></code></pre></div>
+<pre><code>## [1] 59.77381</code></pre>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># out of my own curiosity, I want to see what the max number of sightings per year is and when that was... </span></span>
+<span></span>
+<span><span class="va">bigfoot_yearly</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 84 × 2
+## # Groups:   year [84]
+##     year     n
+##    &lt;dbl&gt; &lt;int&gt;
+##  1    NA   976
+##  2  2004   241
+##  3  2005   209
+##  4  2006   176
+##  5  2003   152
+##  6  2000   146
+##  7  2007   145
+##  8  2008   141
+##  9  2012   141
+## 10  2001   131
+## # … with 74 more rows</code></pre>
+</div>
+<div id="mean-atmospheric-variables" class="section level2" number="9.9">
+<h2>
+<span class="header-section-number">9.9</span> Mean atmospheric variables<a class="anchor" aria-label="anchor" href="#mean-atmospheric-variables"><i class="fas fa-link"></i></a>
+</h2>
+<p>The professor also asked for me find the following: the mean visibility, moon phase, and windspeed. I can save this as <code>mean_atmospheric_var</code>.</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># i can do this all through the same summarize verb </span></span>
+<span></span>
+<span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_vis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">visibility</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>, </span>
+<span>            mean_moon <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">moon_phase</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>, </span>
+<span>            mean_windspeed <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">wind_speed</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">mean_atmospheric_var</span></span>
+<span></span>
+<span><span class="co"># i could also just want to select these variables in case I need to revisit them on their own later. what are some other variables i would need to give the data context? </span></span>
+<span></span>
+<span><span class="co">#bigfoot_sorted %&gt;%</span></span>
+<span>  <span class="co">#select(visibility, moon_phase, wind_speed #what else??)-&gt; atmospheric_conditions</span></span></code></pre></div>
+</div>
+<div id="weve-seen-the-numbers-but-what-are-people-saying" class="section level2" number="9.10">
+<h2>
+<span class="header-section-number">9.10</span> We’ve seen the numbers, but what are people <em>saying</em>?<a class="anchor" aria-label="anchor" href="#weve-seen-the-numbers-but-what-are-people-saying"><i class="fas fa-link"></i></a>
+</h2>
+<p>I remember that I saved that object about the descending date order data. The professor asked for the 4 most recent testimonies.</p>
+</div>
+<div id="now-ill-get-to-do-some-graphs" class="section level2" number="9.11">
+<h2>
+<span class="header-section-number">9.11</span> Now I’ll get to do some graphs :)<a class="anchor" aria-label="anchor" href="#now-ill-get-to-do-some-graphs"><i class="fas fa-link"></i></a>
+</h2>
+<p>I’ve heard something about <code>ggplot2</code>. I don’t know anything about it, so I’m really going to copy and paste what others are doing and add in my own frills and data as I can. I’ll just go back to my trusty <code>bigfoot_sorted</code></p>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jrnold/ggthemes">ggthemes</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># start with the base plot, no frills</span></span>
+<span><span class="co"># i should also make sure that the NAs aren't included </span></span>
+<span></span>
+<span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">season</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
+<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># let's add a theme </span></span>
+<span>  </span>
+<span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">season</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-8-2.png" width="672"></div>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># now some labels </span></span>
+<span></span>
+<span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">season</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span> <span class="st">"Season"</span>, y <span class="op">=</span> <span class="st">"Sightings per Season"</span>, title <span class="op">=</span> <span class="st">"Seasonal Sightings of Bigfoot Across North America"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-8-3.png" width="672"></div>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># now change some text to fit</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">bigfoot_yearly</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 976</code></pre>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bigfoot_sorted</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">season</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span> <span class="st">"Season"</span>, y <span class="op">=</span> <span class="st">"Sightings per Season"</span>, title <span class="op">=</span> <span class="st">"Seasonal Sightings\nof Bigfoot\nAcross North America"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-8-4.png" width="672"></div>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#ggsave("")</span></span></code></pre></div>
+<p>Now, I should get to that line graph…</p>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># start with the base plot, no frills</span></span>
+<span><span class="co"># i should also make sure that the NAs aren't included </span></span>
+<span></span>
+<span><span class="va">bigfoot_yearly</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
+<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># let's add a theme </span></span>
+<span>  </span>
+<span><span class="va">bigfoot_yearly</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-9-2.png" width="672"></div>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># now some labels </span></span>
+<span></span>
+<span><span class="va">bigfoot_yearly</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span> <span class="st">"Year"</span>, y <span class="op">=</span> <span class="st">"Sightings per Year"</span>, title <span class="op">=</span> <span class="st">"Yearly Bigfoot Sightings Across North America"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-9-3.png" width="672"></div>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># now change some text to fit</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">bigfoot_yearly</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 976</code></pre>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bigfoot_yearly</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span> <span class="st">"Year"</span>, y <span class="op">=</span> <span class="st">"Sightings per Year"</span>, title <span class="op">=</span> <span class="st">"Yearly Bigfoot Sightings\nAcross North America"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-9-4.png" width="672"></div>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#ggsave("")</span></span></code></pre></div>
+<p>… Now I have to figure out this GitHub thing???</p>
+
 </div>
 </div>
   <div class="chapter-nav">
@@ -430,6 +767,13 @@
 <li><a class="nav-link" href="#using-palettes-and-themes"><span class="header-section-number">9.4.3</span> Using Palettes and Themes</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#check-out-the-metadata"><span class="header-section-number">9.5</span> CHECK OUT THE METADATA</a></li>
+<li><a class="nav-link" href="#sort-the-data-by-date.-see-if-you-can-get-a-by-year-count-of-observations"><span class="header-section-number">9.6</span> Sort the data by date. See if you can get a by-year count of observations…</a></li>
+<li><a class="nav-link" href="#now-lets-continue-to-summarize-some-of-the-data-as-the-professor-asked"><span class="header-section-number">9.7</span> Now let’s continue to summarize some of the data as the professor asked</a></li>
+<li><a class="nav-link" href="#mean-sightings-per-year"><span class="header-section-number">9.8</span> Mean sightings per year</a></li>
+<li><a class="nav-link" href="#mean-atmospheric-variables"><span class="header-section-number">9.9</span> Mean atmospheric variables</a></li>
+<li><a class="nav-link" href="#weve-seen-the-numbers-but-what-are-people-saying"><span class="header-section-number">9.10</span> We’ve seen the numbers, but what are people saying?</a></li>
+<li><a class="nav-link" href="#now-ill-get-to-do-some-graphs"><span class="header-section-number">9.11</span> Now I’ll get to do some graphs :)</a></li>
 </ul>
 
       <div class="book-extra">
@@ -446,7 +790,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Computational Programming for the Social Sciences</strong>" was written by Sarah Moore and Jean Clipperton. It was last built on 2022-09-03.</p>
+    <p>"<strong>Computational Programming for the Social Sciences</strong>" was written by Sarah Moore and Jean Clipperton. It was last built on 2022-09-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

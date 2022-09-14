@@ -1,7 +1,7 @@
 ---
 title: "Computational Programming for the Social Sciences"
 author: "Sarah Moore and Jean Clipperton"
-date: "2022-09-03"
+date: "2022-09-13"
 site: bookdown::bookdown_site
 output: bookdown::bs4_book
 documentclass: book

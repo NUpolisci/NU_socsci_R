@@ -74,3 +74,10 @@ adding-flavor-to-your-base-plot
 labelling-the-axes
 labelling-ticks
 using-palettes-and-themes
+check-out-the-metadata
+sort-the-data-by-date.-see-if-you-can-get-a-by-year-count-of-observations
+now-lets-continue-to-summarize-some-of-the-data-as-the-professor-asked
+mean-sightings-per-year
+mean-atmospheric-variables
+weve-seen-the-numbers-but-what-are-people-saying
+now-ill-get-to-do-some-graphs
