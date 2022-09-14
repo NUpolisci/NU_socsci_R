@@ -122,3 +122,4 @@ stat_bin-using-bins-30.-pick-better-value-with-binwidth.
 data-science-exercise
 i-have-a-job-for-you
 step-one-get-the-data
+now-to-github

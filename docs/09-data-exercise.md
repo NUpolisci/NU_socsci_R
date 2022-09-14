@@ -40,7 +40,7 @@ What's the worst that can happen? So, you get started...
 
 ## Step One: Get the Data 
 
-So, you know you need to get the data. And you remember Jennifer taught you how to load it directly from GitHub. But I kind of want to have a local copy on my computer? So I can put everything on Github later. 
+So, I know I need to get the data. And I remember Jennifer taught me how to load it directly from GitHub. But I kind of want to have a local copy on my computer? So I can put everything on Github later. 
 
 I'll just deal with this later...let's load in the data. Let's name the dataframe something intuitive that makes sense for now. I'll also make sure to load in the tidyverse because it seems like I'll take a look at it. I can also use `glimpse()` to view the data names and types. 
 
@@ -106,6 +106,7 @@ glimpse(prof_data)
 This is a dataset... about Bigfoot? Ok, well at least it comes from a reputable-sounding source, Bigfoot Field Researchers Organization. And there's this [article](https://timothyrenner.github.io/datascience/2017/06/30/finding-bigfoot.html)? Great! 
 
 So, I really don't have much more information than this. The data are about Bigfoot sightings around the US and North America. There are variables about the location of the sighting, the report provided, environmental and climate data. Ok, well I guess as long as this is ethical research, it's still research! 
+
 Now that I know what this is, I want to save this data to my computer so I can save the changes I might make to it and don't have to continually download it from the tidytuesday post. 
 
 
@@ -338,22 +339,16 @@ bigfoot_sorted %>%
   ggplot(aes(x=season)) + 
   geom_bar() + 
   theme_wsj()+
-  labs(x= "Season", y = "Sightings per Season", title = "Seasonal Sightings\nof Bigfoot\nAcross North America")
-```
-
-<img src="09-data-exercise_files/figure-html/unnamed-chunk-8-4.png" width="672" />
-
-```r
-#ggsave("")
+  labs(x= "Season", y = "Sightings per Season", title = "Seasonal Sightings\nof Bigfoot\nAcross North America")-> bigfoot_seasonal_sightings
 ```
 
 
 
-Now, I should get to that line graph... 
+Now, youshould get to that line graph... 
 
 ```r
 # start with the base plot, no frills
-# i should also make sure that the NAs aren't included 
+# you should also make sure that the NAs aren't included 
 
 bigfoot_yearly %>% 
   filter(!is.na(year)) %>%
@@ -403,14 +398,33 @@ bigfoot_yearly %>%
   ggplot(aes(x=year, y= n)) + 
   geom_line() + 
   theme_wsj() + 
-  labs(x= "Year", y = "Sightings per Year", title = "Yearly Bigfoot Sightings\nAcross North America")
+  labs(x= "Year", y = "Sightings per Year", title = "Yearly Bigfoot Sightings\nAcross North America")->yearly_bigfoot_sightings
 ```
-
-<img src="09-data-exercise_files/figure-html/unnamed-chunk-9-4.png" width="672" />
-
-```r
-#ggsave("")
-```
-
+## Now to GitHub? 
 
 ... Now I have to figure out this GitHub thing??? 
+
+Wait. I just got another email... 
+
+*I also need you to upload the pictures from this GitHub to the new repo. These are my most useful colleagues in this work and I need to acknowledge that: https://bit.ly/3QCn1GE*
+
+Well ok. So, I guess I'll go to this link and download this picture on to my computer and go from there. 
+
+
+
+```r
+# i think now I just want to save all this stuff? 
+
+write.csv(bigfoot_sorted, "/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_sorted.csv")
+
+write.csv(bigfoot_yearly, "/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_yearly.csv")
+
+write.csv(bigfoot_state_n, "/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_states.csv")
+
+write.csv(bigfoot_county_n, "/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_county.csv")
+
+ggsave("/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_seasonal_sightings.png", bigfoot_seasonal_sightings)
+
+ggsave("/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_year_sightings.png", yearly_bigfoot_sightings)
+```
+

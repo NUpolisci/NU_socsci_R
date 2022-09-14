@@ -83,7 +83,7 @@
 <h2>
 <span class="header-section-number">10.2</span> Step One: Get the Data<a class="anchor" aria-label="anchor" href="#step-one-get-the-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>So, you know you need to get the data. And you remember Jennifer taught you how to load it directly from GitHub. But I kind of want to have a local copy on my computer? So I can put everything on Github later.</p>
+<p>So, I know I need to get the data. And I remember Jennifer taught me how to load it directly from GitHub. But I kind of want to have a local copy on my computer? So I can put everything on Github later.</p>
 <p>I’ll just deal with this later…let’s load in the data. Let’s name the dataframe something intuitive that makes sense for now. I’ll also make sure to load in the tidyverse because it seems like I’ll take a look at it. I can also use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> to view the data names and types.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
@@ -136,8 +136,8 @@
 <span class="header-section-number">10.3</span> <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-09-13">CHECK OUT THE METADATA</a><a class="anchor" aria-label="anchor" href="#check-out-the-metadata"><i class="fas fa-link"></i></a>
 </h2>
 <p>This is a dataset… about Bigfoot? Ok, well at least it comes from a reputable-sounding source, Bigfoot Field Researchers Organization. And there’s this <a href="https://timothyrenner.github.io/datascience/2017/06/30/finding-bigfoot.html">article</a>? Great!</p>
-<p>So, I really don’t have much more information than this. The data are about Bigfoot sightings around the US and North America. There are variables about the location of the sighting, the report provided, environmental and climate data. Ok, well I guess as long as this is ethical research, it’s still research!
-Now that I know what this is, I want to save this data to my computer so I can save the changes I might make to it and don’t have to continually download it from the tidytuesday post.</p>
+<p>So, I really don’t have much more information than this. The data are about Bigfoot sightings around the US and North America. There are variables about the location of the sighting, the report provided, environmental and climate data. Ok, well I guess as long as this is ethical research, it’s still research!</p>
+<p>Now that I know what this is, I want to save this data to my computer so I can save the changes I might make to it and don’t have to continually download it from the tidytuesday post.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># i want to rename the data now that I know what it's about... something that makes recall of it easy, like "bigfoot" </span></span>
 <span></span>
@@ -326,21 +326,18 @@ Now that I know what this is, I want to save this data to my computer so I can s
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">season</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span> <span class="st">"Season"</span>, y <span class="op">=</span> <span class="st">"Sightings per Season"</span>, title <span class="op">=</span> <span class="st">"Seasonal Sightings\nof Bigfoot\nAcross North America"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-8-4.png" width="672"></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span> <span class="st">"Season"</span>, y <span class="op">=</span> <span class="st">"Sightings per Season"</span>, title <span class="op">=</span> <span class="st">"Seasonal Sightings\nof Bigfoot\nAcross North America"</span><span class="op">)</span><span class="op">-&gt;</span> <span class="va">bigfoot_seasonal_sightings</span></span></code></pre></div>
+<p>Now, youshould get to that line graph…</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#ggsave("")</span></span></code></pre></div>
-<p>Now, I should get to that line graph…</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># start with the base plot, no frills</span></span>
-<span><span class="co"># i should also make sure that the NAs aren't included </span></span>
+<span><span class="co"># you should also make sure that the NAs aren't included </span></span>
 <span></span>
 <span><span class="va">bigfoot_yearly</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 <div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># let's add a theme </span></span>
 <span>  </span>
 <span><span class="va">bigfoot_yearly</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -349,7 +346,7 @@ Now that I know what this is, I want to save this data to my computer so I can s
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-9-2.png" width="672"></div>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># now some labels </span></span>
 <span></span>
 <span><span class="va">bigfoot_yearly</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -359,21 +356,40 @@ Now that I know what this is, I want to save this data to my computer so I can s
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span> <span class="st">"Year"</span>, y <span class="op">=</span> <span class="st">"Sightings per Year"</span>, title <span class="op">=</span> <span class="st">"Yearly Bigfoot Sightings Across North America"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-9-3.png" width="672"></div>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># now change some text to fit</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">bigfoot_yearly</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 976</code></pre>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bigfoot_yearly</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">year</span>, y<span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/ggthemes/man/theme_wsj.html">theme_wsj</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span> <span class="st">"Year"</span>, y <span class="op">=</span> <span class="st">"Sightings per Year"</span>, title <span class="op">=</span> <span class="st">"Yearly Bigfoot Sightings\nAcross North America"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="09-data-exercise_files/figure-html/unnamed-chunk-9-4.png" width="672"></div>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#ggsave("")</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x<span class="op">=</span> <span class="st">"Year"</span>, y <span class="op">=</span> <span class="st">"Sightings per Year"</span>, title <span class="op">=</span> <span class="st">"Yearly Bigfoot Sightings\nAcross North America"</span><span class="op">)</span><span class="op">-&gt;</span><span class="va">yearly_bigfoot_sightings</span></span></code></pre></div>
+</div>
+<div id="now-to-github" class="section level2" number="10.10">
+<h2>
+<span class="header-section-number">10.10</span> Now to GitHub?<a class="anchor" aria-label="anchor" href="#now-to-github"><i class="fas fa-link"></i></a>
+</h2>
 <p>… Now I have to figure out this GitHub thing???</p>
+<p>Wait. I just got another email…</p>
+<p><em>I also need you to upload the pictures from this GitHub to the new repo. These are my most useful colleagues in this work and I need to acknowledge that: <a href="https://bit.ly/3QCn1GE" class="uri">https://bit.ly/3QCn1GE</a></em></p>
+<p>Well ok. So, I guess I’ll go to this link and download this picture on to my computer and go from there.</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># i think now I just want to save all this stuff? </span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">bigfoot_sorted</span>, <span class="st">"/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_sorted.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">bigfoot_yearly</span>, <span class="st">"/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_yearly.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">bigfoot_state_n</span>, <span class="st">"/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_states.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span><span class="op">(</span><span class="va">bigfoot_county_n</span>, <span class="st">"/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_data_county.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_seasonal_sightings.png"</span>, <span class="va">bigfoot_seasonal_sightings</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"/Users/sarahmoore/Library/CloudStorage/OneDrive-NorthwesternUniversity/bigfoot/bigfoot_year_sightings.png"</span>, <span class="va">yearly_bigfoot_sightings</span><span class="op">)</span></span></code></pre></div>
 
 </div>
 </div>
